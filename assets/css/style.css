@@ -502,11 +502,25 @@ main {
   font-size: var(--fs-6);
   font-weight: var(--fw-300);
   line-height: 1.6;
+  white-space: normal;
 }
 
-.about-text p { margin-bottom: 15px; }
+.about-text p { 
+  margin-bottom: 15px; 
+  white-space: normal;
+}
 
+.about-text p a {
+  color: #ffdc6c;
+  display: inline;
+  white-space: normal;
+}
 
+.about-text p a:hover,
+.about-text p a:focus {
+  color: #f5ce51;
+  text-decoration: underline;
+}
 
 /**
  * #service 
