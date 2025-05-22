@@ -1,6 +1,22 @@
 'use strict';
 
-
+// at the top of your script.js
+document.addEventListener("DOMContentLoaded", () => {
+  const path = window.location.pathname;
+  if (path.startsWith("/blog")) {
+    // 1) Clear any existing "active"s
+    document.querySelectorAll("[data-nav-link].active").forEach(el => el.classList.remove("active"));
+    document.querySelectorAll("[data-page].active").forEach(el => el.classList.remove("active"));
+    // 2) Activate the Blog button
+    const blogBtn = Array.from(document.querySelectorAll("[data-nav-link]"))
+                         .find(btn => btn.textContent.trim() === "Blog");
+    if (blogBtn) blogBtn.classList.add("active");
+    // 3) Activate the blog section
+    const blogPage = document.querySelector('[data-page="blog"]');
+    if (blogPage) blogPage.classList.add("active");
+  }
+  // …then let your normal click‑handler logic run as usual…
+});
 
 // element toggle function
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
