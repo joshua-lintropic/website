@@ -1,4 +1,3 @@
-- Write the first post, link it to the posts tab
 - Sort the blog posts by a date parameter
 - Does the contact form work right now? 
-- Add more coursework!
+- Why does Blog -> First Post -> Resume not go to the resume tab? 
