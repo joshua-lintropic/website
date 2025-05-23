@@ -37,7 +37,7 @@
     link.addEventListener("click", () => {
       const pageName = link.textContent.trim().toLowerCase();
       if (window.location.hash.slice(1) !== pageName) {
-        window.location.hash = pageName; // also triggers hashchange
+        window.location.hash = pageName; // triggers hashchange
       }
       activatePage(pageName);
     });
@@ -89,16 +89,22 @@
 
   /* ---------------------------------------------------------------------
    * 4. BLOG TAG FILTER (index.html → Blog section)
+   *      — initialised *after* DOMContentLoaded so queries never miss nodes
    * -------------------------------------------------------------------*/
-  const selectEl = document.querySelector("[data-select]");
-  if (selectEl) {
-    // Some templates still ship with the historic misspelling “selecct”. Support both.
+  const initBlogFilter = () => {
+    const selectEl = document.querySelector("[data-select]");
+    if (!selectEl) return; // blog section not on this page
+
+    // historic misspelling support
     const selectValue = document.querySelector("[data-select-value]") ||
                         document.querySelector("[data-selecct-value]");
 
     const dropdownItems = document.querySelectorAll("[data-select-item]");
     const filterBtns    = document.querySelectorAll("[data-filter-btn]");
     const posts         = document.querySelectorAll("[data-filter-item]");
+
+    /* defensive check — bail if markup is incomplete */
+    if (!posts.length || (!dropdownItems.length && !filterBtns.length)) return;
 
     const applyFilter = tag => {
       posts.forEach(post => {
@@ -107,20 +113,24 @@
       });
     };
 
-    // 4.a – dropdown open/close (touch + mobile)
-    selectEl.addEventListener("click", () => toggleActive(selectEl));
+    /* 4.a – dropdown open/close (touch + mobile) */
+    selectEl.addEventListener("click", e => {
+      // avoid double‑toggle when clicking inside the dropdown list
+      if (e.target.closest("[data-select-item]")) return;
+      toggleActive(selectEl);
+    });
 
-    // 4.b – choose tag from dropdown list
+    /* 4.b – choose tag from dropdown list */
     dropdownItems.forEach(item => {
       item.addEventListener("click", () => {
         const tag = item.textContent.trim().toLowerCase();
         if (selectValue) selectValue.textContent = item.textContent.trim();
-        toggleActive(selectEl);
+        toggleActive(selectEl);           // close dropdown
         applyFilter(tag);
       });
     });
 
-    // 4.c – large‑screen pill buttons
+    /* 4.c – large‑screen pill buttons */
     let lastActiveBtn = Array.from(filterBtns).find(btn => btn.classList.contains("active")) || filterBtns[0];
 
     filterBtns.forEach(btn => {
@@ -135,8 +145,15 @@
       });
     });
 
-    // 4.d – First‑load: show posts according to any pre‑selected tag or default to “all”
+    /* 4.d – First‑load: ensure posts visibility is correct */
     const initialTag = (lastActiveBtn?.textContent || "all").trim().toLowerCase();
     applyFilter(initialTag);
+  };
+
+  /* Initialise blog filter after DOM has fully loaded */
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initBlogFilter);
+  } else {
+    initBlogFilter(); // script is at the end of body → DOM already parsed
   }
 })();
