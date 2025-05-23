@@ -1,6 +1,6 @@
 // --------------------------------------
 //  Joshua Lin – Portfolio / Blog
-//  Unified site script (sidebar + SPA nav)
+//  Unified site script (sidebar + SPA nav + testimonials modal)
 //  May 2025
 // --------------------------------------
 
@@ -60,19 +60,47 @@
   window.addEventListener("hashchange", handleHashChange);
   document.addEventListener("DOMContentLoaded", handleHashChange);
 
-  const modalContainer = document.querySelector('[data-modal-container]');
-  const modalCloseBtn = document.querySelector('[data-modal-close-btn]');
-  const testimonialsItems = document.querySelectorAll('[data-testimonials-item]');
+  /* ---------------------------------------------------------------------
+   * 3. TESTIMONIALS MODAL (index.html only)
+   * -------------------------------------------------------------------*/
+  const modalContainer = document.querySelector("[data-modal-container]");
 
-  // add click event to all modal items
-  for (let i = 0; i < testimonialsItems.length; i++) {
-    testimonialsItems[i].addEventListener("click", function () {
-      modalImg.src = this.querySelector("[data-testimonials-avatar]").src;
-      modalImg.alt = this.querySelector("[data-testimonials-avatar]").alt;
-      modalTitle.innerHTML = this.querySelector("[data-testimonials-title]").innerHTML;
-      modalText.innerHTML = this.querySelector("[data-testimonials-text]").innerHTML;
+  // Guard‑clause: only run if the testimonials modal exists on the page.
+  if (modalContainer) {
+    const modalImg   = modalContainer.querySelector("[data-modal-img]");
+    const modalTitle = modalContainer.querySelector("[data-modal-title]");
+    const modalText  = modalContainer.querySelector("[data-modal-text]");
 
-      testimonialsModalFunc();
+    const modalCloseBtn = modalContainer.querySelector("[data-modal-close-btn]");
+    const overlay       = document.querySelector("[data-overlay]");
+    const testimonialItems = document.querySelectorAll("[data-testimonials-item]");
+
+    // toggle helper – mirrors the behaviour in the legacy script
+    const toggleModal = () => {
+      modalContainer.classList.toggle("active");
+      overlay?.classList.toggle("active");
+    };
+
+    // populate + open on card click
+    testimonialItems.forEach(item => {
+      item.addEventListener("click", () => {
+        const avatar   = item.querySelector("[data-testimonials-avatar]");
+        const titleEl  = item.querySelector("[data-testimonials-title]");
+        const textEl   = item.querySelector("[data-testimonials-text]");
+
+        if (avatar) {
+          modalImg.src = avatar.src;
+          modalImg.alt = avatar.alt;
+        }
+        modalTitle.innerHTML = titleEl?.innerHTML ?? "";
+        modalText.innerHTML  = textEl?.innerHTML  ?? "";
+
+        toggleModal();
+      });
     });
+
+    // close events – button & dimmed overlay
+    modalCloseBtn?.addEventListener("click", toggleModal);
+    overlay?.addEventListener("click", toggleModal);
   }
 })();
