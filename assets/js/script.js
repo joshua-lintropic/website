@@ -64,14 +64,15 @@
   const modalCloseBtn = document.querySelector('[data-modal-close-btn]');
   const testimonialsItems = document.querySelectorAll('[data-testimonials-item]');
 
-  testimonialsItems.forEach(item => {
-    item.addEventListener('click', () => {
-      // Update modal content if needed - for example using dataset attributes or innerHTML
-      modalContainer.classList.add('active');
-    });
-  });
+  // add click event to all modal items
+  for (let i = 0; i < testimonialsItems.length; i++) {
+    testimonialsItems[i].addEventListener("click", function () {
+      modalImg.src = this.querySelector("[data-testimonials-avatar]").src;
+      modalImg.alt = this.querySelector("[data-testimonials-avatar]").alt;
+      modalTitle.innerHTML = this.querySelector("[data-testimonials-title]").innerHTML;
+      modalText.innerHTML = this.querySelector("[data-testimonials-text]").innerHTML;
 
-  modalCloseBtn.addEventListener('click', () => {
-    modalContainer.classList.remove('active');
-  });
+      testimonialsModalFunc();
+    });
+  }
 })();
