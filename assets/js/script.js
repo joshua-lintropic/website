@@ -59,4 +59,19 @@
 
   window.addEventListener("hashchange", handleHashChange);
   document.addEventListener("DOMContentLoaded", handleHashChange);
+
+  const modalContainer = document.querySelector('[data-modal-container]');
+  const modalCloseBtn = document.querySelector('[data-modal-close-btn]');
+  const testimonialsItems = document.querySelectorAll('[data-testimonials-item]');
+
+  testimonialsItems.forEach(item => {
+    item.addEventListener('click', () => {
+      // Update modal content if needed - for example using dataset attributes or innerHTML
+      modalContainer.classList.add('active');
+    });
+  });
+
+  modalCloseBtn.addEventListener('click', () => {
+    modalContainer.classList.remove('active');
+  });
 })();
