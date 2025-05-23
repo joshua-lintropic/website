@@ -1,3 +1,1 @@
 - Sort the blog posts by a date parameter
-- Does the contact form work right now? 
-- Why does Blog -> First Post -> Resume not go to the resume tab? 
