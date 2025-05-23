@@ -8,7 +8,7 @@
   "use strict";
 
   /* ---------------------------------------------------------------------
-   *  Helpers
+   * Helpers
    * -------------------------------------------------------------------*/
   const toggleActive = el => el?.classList.toggle("active");
 
@@ -17,48 +17,36 @@
    * -------------------------------------------------------------------*/
   const sidebar    = document.querySelector("[data-sidebar]");
   const sidebarBtn = document.querySelector("[data-sidebar-btn]");
-
-  sidebarBtn?.addEventListener("click", () => {
-    toggleActive(sidebar);
-  });
+  sidebarBtn?.addEventListener("click", () => toggleActive(sidebar));
 
   /* ---------------------------------------------------------------------
-   * 2. SINGLE-PAGE NAVIGATION (index.html only)
+   * 2. SINGLE‑PAGE NAVIGATION (index.html only)
    * -------------------------------------------------------------------*/
-  const navLinks = document.querySelectorAll("[data-nav-link]"); // buttons in the navbar
-  const pages    = document.querySelectorAll("[data-page]");    // <article data-page="about"> …
+  const navLinks = document.querySelectorAll("[data-nav-link]");
+  const pages    = document.querySelectorAll("[data-page]");
 
   const activatePage = (pageName = "about") => {
-    pages.forEach(page => {
-      page.classList.toggle("active", page.dataset.page === pageName);
-    });
-
+    pages.forEach(page => page.classList.toggle("active", page.dataset.page === pageName));
     navLinks.forEach(link => {
       const name = link.textContent.trim().toLowerCase();
       link.classList.toggle("active", name === pageName);
     });
   };
 
-  // 2.a – click on navbar button  →  change hash & activate
   navLinks.forEach(link => {
     link.addEventListener("click", () => {
       const pageName = link.textContent.trim().toLowerCase();
-
-      // Skip if already on the same section to avoid double-calling.
       if (window.location.hash.slice(1) !== pageName) {
-        window.location.hash = pageName; // triggers hashchange as well
+        window.location.hash = pageName; // also triggers hashchange
       }
-
       activatePage(pageName);
     });
   });
 
-  // 2.b – deep-link support: on first load & when hash changes (Back/Forward)
   const handleHashChange = () => {
-    const hashPage = window.location.hash.slice(1).toLowerCase();
-    if (hashPage) activatePage(hashPage);
+    const hash = window.location.hash.slice(1).toLowerCase();
+    if (hash) activatePage(hash);
   };
-
   window.addEventListener("hashchange", handleHashChange);
   document.addEventListener("DOMContentLoaded", handleHashChange);
 
@@ -66,38 +54,35 @@
    * 3. TESTIMONIALS MODAL (index.html only)
    * -------------------------------------------------------------------*/
   const modalContainer = document.querySelector("[data-modal-container]");
-
   if (modalContainer) {
     const modalImg   = modalContainer.querySelector("[data-modal-img]");
     const modalTitle = modalContainer.querySelector("[data-modal-title]");
     const modalText  = modalContainer.querySelector("[data-modal-text]");
-
     const modalCloseBtn = modalContainer.querySelector("[data-modal-close-btn]");
     const overlay       = document.querySelector("[data-overlay]");
-    const testimonialItems = document.querySelectorAll("[data-testimonials-item]");
+    const testimonialCards = document.querySelectorAll("[data-testimonials-item]");
 
     const toggleModal = () => {
       toggleActive(modalContainer);
       toggleActive(overlay);
     };
 
-    testimonialItems.forEach(item => {
-      item.addEventListener("click", () => {
-        const avatar  = item.querySelector("[data-testimonials-avatar]");
-        const titleEl = item.querySelector("[data-testimonials-title]");
-        const textEl  = item.querySelector("[data-testimonials-text]");
+    testimonialCards.forEach(card => {
+      card.addEventListener("click", () => {
+        const avatar = card.querySelector("[data-testimonials-avatar]");
+        const title  = card.querySelector("[data-testimonials-title]");
+        const text   = card.querySelector("[data-testimonials-text]");
 
         if (avatar) {
           modalImg.src = avatar.src;
           modalImg.alt = avatar.alt;
         }
-        modalTitle.innerHTML = titleEl?.innerHTML ?? "";
-        modalText.innerHTML  = textEl?.innerHTML  ?? "";
+        modalTitle.innerHTML = title?.innerHTML ?? "";
+        modalText.innerHTML  = text?.innerHTML  ?? "";
 
         toggleModal();
       });
     });
-
     modalCloseBtn?.addEventListener("click", toggleModal);
     overlay?.addEventListener("click", toggleModal);
   }
@@ -106,47 +91,52 @@
    * 4. BLOG TAG FILTER (index.html → Blog section)
    * -------------------------------------------------------------------*/
   const selectEl = document.querySelector("[data-select]");
-
   if (selectEl) {
-    const selectValue  = document.querySelector("[data-selecct-value]"); // markup typo kept for compat
-    const selectItems  = document.querySelectorAll("[data-select-item]");
-    const filterBtns   = document.querySelectorAll("[data-filter-btn]");
-    const filterItems  = document.querySelectorAll("[data-filter-item]");
+    // Some templates still ship with the historic misspelling “selecct”. Support both.
+    const selectValue = document.querySelector("[data-select-value]") ||
+                        document.querySelector("[data-selecct-value]");
 
-    const applyFilter = value => {
-      filterItems.forEach(item => {
-        item.classList.toggle(
-          "active",
-          value === "all" || item.dataset.category === value
-        );
+    const dropdownItems = document.querySelectorAll("[data-select-item]");
+    const filterBtns    = document.querySelectorAll("[data-filter-btn]");
+    const posts         = document.querySelectorAll("[data-filter-item]");
+
+    const applyFilter = tag => {
+      posts.forEach(post => {
+        const match = tag === "all" || post.dataset.category === tag;
+        post.classList.toggle("active", match);
       });
     };
 
-    // 4.a – open / close dropdown (mobile)
+    // 4.a – dropdown open/close (touch + mobile)
     selectEl.addEventListener("click", () => toggleActive(selectEl));
 
-    // 4.b – choose tag from dropdown
-    selectItems.forEach(item => {
+    // 4.b – choose tag from dropdown list
+    dropdownItems.forEach(item => {
       item.addEventListener("click", () => {
-        const value = item.textContent.trim().toLowerCase();
-        selectValue.textContent = item.textContent.trim();
+        const tag = item.textContent.trim().toLowerCase();
+        if (selectValue) selectValue.textContent = item.textContent.trim();
         toggleActive(selectEl);
-        applyFilter(value);
+        applyFilter(tag);
       });
     });
 
     // 4.c – large‑screen pill buttons
-    let lastClickedBtn = filterBtns[0];
+    let lastActiveBtn = Array.from(filterBtns).find(btn => btn.classList.contains("active")) || filterBtns[0];
+
     filterBtns.forEach(btn => {
       btn.addEventListener("click", () => {
-        const value = btn.textContent.trim().toLowerCase();
-        selectValue.textContent = btn.textContent.trim();
-        applyFilter(value);
+        const tag = btn.textContent.trim().toLowerCase();
+        if (selectValue) selectValue.textContent = btn.textContent.trim();
+        applyFilter(tag);
 
-        lastClickedBtn?.classList.remove("active");
+        lastActiveBtn?.classList.remove("active");
         btn.classList.add("active");
-        lastClickedBtn = btn;
+        lastActiveBtn = btn;
       });
     });
+
+    // 4.d – First‑load: show posts according to any pre‑selected tag or default to “all”
+    const initialTag = (lastActiveBtn?.textContent || "all").trim().toLowerCase();
+    applyFilter(initialTag);
   }
 })();
