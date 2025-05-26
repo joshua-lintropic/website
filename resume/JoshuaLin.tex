@@ -1,0 +1,271 @@
+%-----------------------------------------------------------------------------------------------------------------------------------------------%
+%	The MIT License (MIT)
+%
+%	Copyright (c) 2021 Jitin Nair
+%
+%	Permission is hereby granted, free of charge, to any person obtaining a copy
+%	of this software and associated documentation files (the "Software"), to deal
+%	in the Software without restriction, including without limitation the rights
+%	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+%	copies of the Software, and to permit persons to whom the Software is
+%	furnished to do so, subject to the following conditions:
+%	
+%	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+%	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+%	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+%	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+%	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+%	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+%	THE SOFTWARE.
+%	
+%
+%-----------------------------------------------------------------------------------------------------------------------------------------------%
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT DEFINITION
+%----------------------------------------------------------------------------------------
+
+% article class because we want to fully customize the page and not use a cv template
+\documentclass[a4paper,10pt]{article}
+
+%----------------------------------------------------------------------------------------
+%	FONT
+%----------------------------------------------------------------------------------------
+
+% % fontspec allows you to use TTF/OTF fonts directly
+% \usepackage{fontspec}
+% \defaultfontfeatures{Ligatures=TeX}
+
+% % modified for ShareLaTeX use
+% \setmainfont[
+% SmallCapsFont = Fontin-SmallCaps.otf,
+% BoldFont = Fontin-Bold.otf,
+% ItalicFont = Fontin-Italic.otf
+% ]
+% {Fontin.otf}
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES
+%----------------------------------------------------------------------------------------
+\usepackage{amsmath}
+
+\usepackage{url}
+\usepackage{parskip} 	
+
+%other packages for formatting
+\RequirePackage{color}
+\RequirePackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[scale=0.9]{geometry}
+
+%tabularx environment
+\usepackage{tabularx}
+
+%for lists within experience section
+\usepackage{enumitem}
+
+% centered version of 'X' col. type
+\newcolumntype{C}{>{\centering\arraybackslash}X} 
+
+%to prevent spillover of tabular into next pages
+\usepackage{supertabular}
+\usepackage{tabularx}
+\newlength{\fullcollw}
+\setlength{\fullcollw}{0.47\textwidth}
+
+%custom \section
+\usepackage{titlesec}				
+\usepackage{multicol}
+\usepackage{multirow}
+
+%CV Sections inspired by: 
+%http://stefano.italians.nl/archives/26
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{10pt}{10pt}
+
+%for publications
+\usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
+
+%Setup hyperref package, and colours for links
+\usepackage[unicode, draft=false]{hyperref}
+\definecolor{linkcolour}{rgb}{0,0.2,0.6}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
+% \addbibresource{citations.bib}
+% \setlength\bibitemsep{1em}
+
+%for social icons
+\usepackage{fontawesome5}
+
+%for asterisk footnote
+\usepackage{footnote}
+\usepackage[para]{footmisc}
+\renewcommand{\thempfootnote}{\fnsymbol{mpfootnote}}
+
+%----------------------------------------------------------------------------------------
+%	BEGIN DOCUMENT
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+% non-numbered pages
+\pagestyle{empty} 
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+% \begin{tabularx}{\linewidth}{ @{}X X@{} }
+% \huge{Your Name}\vspace{2pt} & \hfill \emoji{incoming-envelope} email@email.com \\
+% \raisebox{-0.05\height}\faGithub\ username \ | \
+% \raisebox{-0.00\height}\faLinkedin\ username \ | \ \raisebox{-0.05\height}\faGlobe \ mysite.com  & \hfill \emoji{calling} number
+% \end{tabularx}
+
+\begin{tabularx}{\linewidth}{@{} C @{}}
+\Huge{Joshua Lin} \\[7.5pt]
+\href{https://github.com/EntropicHippo}{\raisebox{-0.05\height}\faGithub\ EntropicHippo} \ $|$ \ 
+\href{https://linkedin.com/in/lintropic-joshua}{\raisebox{-0.05\height}\faLinkedin\ Joshua Lin} \ $|$ \ 
+\href{https://lintropic.com}{\raisebox{-0.05\height}\faGlobe \ lintropic.com} \ $|$ \ 
+\href{mailto:joshua.lin@princeton.edu}{\raisebox{-0.05\height}\faEnvelope \ joshua.lin@princeton.edu} \ $|$ \ 
+\href{tel:+15596910093}{\raisebox{-0.05\height}\faMobile \ +559.691.0093} \\
+\end{tabularx}
+
+%Interests/ Keywords/ Summary
+% \section{Objective}
+% This CV can also be automatically complied and published using GitHub Actions. For details, \href{https://github.com/jitinnair1/autoCV}{click here}.
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION
+%----------------------------------------------------------------------------------------
+\section{Education}
+% \begin{tabularx}{\linewidth}{@{}l X@{}}	
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Princeton University}, A.B. Mathematics & \hfill \normalsize (Expected) Aug 2023 - May 2027 \\[1.75pt] % Aug 25 - May 28
+\textit{Minors in Computer Science, Statistics \& Machine Learning} & \textit{GPA: 3.8/4.0} \\[3.50pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
+        \item[--] Relevant Coursework: Linear \& Nonlinear Optimization\footnote[2]{Denotes graduate coursework.$\qquad^{\S}\;\,$Denotes Fall 2025 coursework.}, Mathematical Machine Learning$^{\dagger}$, Functional Analysis$^{\dagger\,\S}$, Algorithmic Game Theory, Operating Systems, Probability \& Stochastic Systems, Financial Mathematics (with Itô Calculus).
+        \item[--] Awards \& Activities: Princeton Physics Pyka Memorial Prize for ``promise in independent research,'' ACM Competition Chair, Portfolio Optimization at Paragon Global Investments, Tour Director for the Princeton Debate Panel.
+    \end{itemize}
+    \end{minipage}
+}
+\end{tabularx}
+
+
+%----------------------------------------------------------------------------------------
+% EXPERIENCE SECTIONS
+%----------------------------------------------------------------------------------------
+
+%Experience
+\section{Experience}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+    \textbf{Numerical Optimization Researcher} & \hfill Oct 2024 - Present \\[1.50pt]
+\textit{Princeton Astrophysical Data Laboratory} & \hfill \textit{Princeton, NJ} \\[3.75pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
+        \item[--] My principal goal is to find ``good'' approximations for a particular high-dimensional $({\approx}10^{12} \textrm{ parameters})$ nonconvex mixed-integer allocation problem. My current approach combines GNNs and RL algorithms to learn robust solutions.
+        \item[--] My work, selected for \href{https://web.astro.princeton.edu/academic/undergraduate-summer-research-program-usrp}{USRP} funding, will direct the \href{https://pfs.ipmu.jp}{Prime Focus Spectrograph}'s second-year exposures. [The PFS is an international consortium of over twenty-five universities and national laboratories to study \href{https://arxiv.org/abs/2206.14908}{large-scale galaxy evolution}.]
+    \end{itemize}
+    \end{minipage}
+}
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+    \textbf{Directed Reading Program} & \hfill Jun 2024 - Aug 2024 \\[1.50pt]
+    \textit{Princeton Mathematics Department} & \hfill \textit{Hybrid ${|}$ Princeton, NJ} \\[3.75pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
+        \item[--] Accelerated study of topics in general relativity and theoretical cosmology, with the requisite semi-Riemannian geometry.
+        \item[--] Led by Anthony Coniglio and supervised by Professor Sergiu Klainerman. 
+    \end{itemize}
+    \end{minipage}
+}
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+    \textbf{Mathematics Teaching Assistant} & \hfill Jun 2024 - Aug 2024 \\[1.50pt]
+\textit{Jane Street Capital} & \hfill \textit{New York, NY} \\[3.75pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
+        % \item[--] Invited to return to the AMP Talent Search as instructor for distinguished performance as student. 
+        \item[--] Taught topics in probability, combinatorics, and number theory at the Academy of Mathematics and Programming.
+        \item[--] Facilitated probability games, market-making simulations, and the Electronic Trading Challenge. 
+    \end{itemize}
+    \end{minipage}
+}
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Computational Physics Research Intern} & \hfill Jan 2023 - May 2023 \\[1.50pt] % Jan 15 - May 17
+\textit{NASA Jet Propulsion Laboratory} & \hfill \textit{Pasadena, CA} \\[3.75pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
+        \item[--] Developed numerical and analytical methods to approximate the ages of lithospheric bands, identify regions of geologic co-/re-activation, and classify surface fractures in Europa's nondeformed and chaos terrains.
+        \item[--] Presented at NASA-JPL summer research conference to members of the \textit{Europa Clipper} physics team.
+    \end{itemize}
+    \end{minipage}
+}
+\end{tabularx}
+
+%Projects
+\section{Projects}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+% \textbf{Moco \{Top Prize, HackPrinceton\}} & \hfill \href{https://some-link.com}{Link to Demo} \\[3.75pt]
+\textbf{Emergency Signaling System} & \hfill Nov 2023 \\[1.50pt]
+\textit{Top Prize, HackPrinceton} & \hfill \textit{Princeton, NJ} \\[3.75pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
+        \item[--] Developed ``Moco'' to discretely execute preset emergency calls, texts, and other customizable actions, triggered by customizable wrist gestures pre-calibrated with iOS app.
+        % \item[--] Implementation: iterative closest point to map gesture/key point clouds, dynamic time warping for quantification of dissimilarity.
+        \item[--] Routed real-time data streams from Apple Watch accelerometer/gyroscope to server for gesture matching.
+    \end{itemize}
+    \end{minipage}
+}
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+%\textbf{Nidoqueen \{Top Prize, Jane Street Electronic Trading Challenge\}} & \hfill \href{https://some-link.com}{Link to Demo} \\[3.75pt]
+\textbf{Automated Securities Trader} & \hfill July 2023 \\[1.50pt]
+\textit{Top Prize, Jane Street Electronic Trading Challenge} & \hfill \textit{New York, NY} \\[3.75pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
+        \item[--] Engineered stochastic models to forecast time series through order book data, conducting six hours of live market making.
+        \item[--] Interfaced with backend AWS servers through WebSocket API to exchange bonds, stocks, and ETFs at high frequency.
+        % \item[--] Achieved $1^{\textrm{st}}$ Place in both divisions: a) highest overall PNL, b) greatest peak (last-hour) PNL. 
+    \end{itemize}
+    \end{minipage}
+}
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%	PUBLICATIONS
+%----------------------------------------------------------------------------------------
+% \section{Publications}
+% \begin{refsection}[citations.bib]
+% \nocite{*}
+% \printbibliography[heading=none]
+% \end{refsection}
+
+%----------------------------------------------------------------------------------------
+%	SKILLS
+%----------------------------------------------------------------------------------------
+\section{Skills, Interests, \& Awards}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+Skills & \normalsize{ Languages: Python, C, C++, x86 Assembly. Libraries: CVXPy, PEPit, Tensorflow, Pandas, Scipy.}\\[2pt]
+%Statistics & \normalsize{Excel, R, SQL, Mathematica, MorningStar Direct }\\
+Interests & \normalsize{Mathematical optimization; statistical learning theory; asymptotic statistics; physics-based machine learning.}\\[2pt]
+Awards & \normalsize{Bill and Melinda Gates Scholarship, USAPhO Semifinalist with Honorable Mention, Wells Fargo Wealth Management Competition National Champion.}
+\end{tabularx}
+
+% \vfill
+% \center{\footnotesize Last updated: \today. Created in \LaTeX.}
+
+\end{document}
