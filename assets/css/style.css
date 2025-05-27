@@ -1074,6 +1074,93 @@ main {
   z-index: -1;
 }
 
+/* BLOG POST SINGLE IMAGE */
+.blog-post-image {
+  width: 50%;
+  margin: 20px auto;
+  height: auto;
+  overflow: hidden;
+  display: block;
+  border-radius: 12px;
+}
+
+.blog-post-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* BLOG POST IMAGE CAROUSEL */
+.blog-post-carousel {
+  margin: 20px auto;
+  width: 100%;
+}
+
+.blog-post-carousel.centered .carousel-list {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 15px;
+  margin: 0 -15px;
+  padding: 0px 15px 15px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: inline mandatory;
+}
+
+.carousel-list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 15px;
+  margin: 0 -15px;
+  margin-bottom: 35px;
+  padding: 0px 15px 15px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: inline mandatory;
+}
+
+.carousel-list::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.carousel-list::-webkit-scrollbar-track {
+  background: var(--onyx);
+  border-radius: 5px;
+}
+
+.carousel-list::-webkit-scrollbar-thumb {
+  background: var(--orange-yellow-crayola);
+  border-radius: 5px;
+}
+
+.carousel-list::-webkit-scrollbar-button {
+  width: 20px;
+}
+
+.carousel-item {
+  flex: 0 0 auto;
+  scroll-snap-align: center;
+}
+
+.carousel-item img {
+  height: auto;
+  max-height: 200px;
+  display: block;
+  border-radius: 12px;
+}
+
+.carousel-item figcaption {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
 .blog-banner-box {
   width: 100%;
   height: 200px;
