@@ -1,2 +1,2 @@
-My personal website, for both academic and personal purposes. 
+My personal website, for both academic and life purposes. 
 
