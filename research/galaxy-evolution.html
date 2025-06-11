@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog – Disney Trip</title>
+  <title>Research – Prime Focus Spectrograph</title>
 
   <!-- favicon -->
   <link rel="shortcut icon" href="../assets/images/logo.ico" type="image/x-icon">
@@ -17,6 +17,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- latex support -->
+  <script> window.MathJax = { chtml: { scale: 0.9 }, tex: { inlineMath: [['$', '$']] } }; </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
@@ -98,66 +102,95 @@
       <!-- BLOG POST BODY -->
       <article class="about active" data-page="blog-post">
         <header>
-          <h2 class="h2 article-title">Disney&nbsp;Trip</h2>
+          <h2 class="h2 article-title">Galaxy&nbsp;Evolution</h2>
         </header>
         <section class="about-text">
-          <p>
-            <i>Published 2025-05-26.</i>
-          </p>
-          <p>
-            On Saturday (May 24, 2025) we visited Disneyland! We toured some great locations across the park:  
-          </p>
-          <figure class="blog-post-carousel">
-            <ul class="carousel-list">
-              <li class="carousel-item">
-                <img src="disney/disney-turkey-leg.webp" alt="Eating turkey leg" />
-                <figcaption>The infamous turkey leg</figcaption>
-              </li>
-              <li class="carousel-item">
-                <img src="disney/disney-millennium-falcon.webp" alt="In front of ship" />
-                <figcaption>Millennium Falcon</figcaption>
-              </li>
-              <li class="carousel-item">
-                <img src="disney/disney-pilot-helmets.webp" alt="Wearing pilot helmets" />
-                <figcaption>Resistance pilots 🫡</figcaption>
-              </li>
-              <li class="carousel-item">
-                <img src="disney/disney-ronto-less-garden-wrap.webp" alt="Eating wraps" />
-                <figcaption>Ronto wrap</figcaption>
-              </li>
-              <li class="carousel-item">
-                <img src="disney/disney-mickey-toontown.webp" alt="Toontown" />
-                <figcaption>Mickey's Toontown</figcaption>
-              </li>
-              <li class="carousel-item">
-                <img src="disney/disney-kylo-rens-shuttle.webp" alt="Kylo Ren's shuttle" />
-                <figcaption>Kylo Ren's shuttle</figcaption>
-              </li>
-            </ul>
-          </figure>
-          <p>
-            ...and wielded some powerful lightsabers: 
-          </p>
-          <figure class="blog-post-carousel">
-            <ul class="carousel-list">
-              <li class="carousel-item">
-                <img src="disney/disney-jlin-lightsaber.webp" alt="Holding lightsaber" />
-              </li>
-              <li class="carousel-item">
-                <img src="disney/disney-kmay-lightsaber.webp" alt="Holding lightsaber" />
-              </li>
-              <li class="carousel-item">
-                <img src="disney/disney-hippo-lightsaber.webp" alt="Holding lightsaber" />
-              </li>
-            </ul>
-          </figure>
 
           <p>
-            ...before finding a happily ever after.
+            This page is currently under construction!
           </p>
+
+          <p>
+            <i>Published 2025-06-XX.</i>
+          </p>
+
+          <header>
+            <h3>Introduction</h3>
+          </header>
+          <p>
+            The Subaru Prime Focus Spectrograph at the Mauna Kea observatory in Hawai'i seeks to answer the following <a href="https://pfs.ipmu.jp/instrumentation.html">question</a>: <i>What aspects of large-scale cosmological structure drive the formation and evolution of galaxies?</i>  
+          </p>
+          <p>
+            Researchers from <a href="https://pfs.ipmu.jp/people.html">all over the world</a> are working together to construct a first-of-its-kind instrument that can conduct a spectrographic survey "large enough" to precisely identify these causal relationships. Its observations will test our theories of dark matter, illuminate the life cycles of black holes, and trace "reionization" &mdash; the moment when the first stars flooded space with ultraviolet light, lifting the fog of the cosmic "dark ages."
+          </p>
+
           <figure class="blog-post-image">
-            <img src="disney/disney-happily-ever-after.webp" alt="Disney castle">
+            <img src="galaxy-evolution/pfs-instrument.webp" alt="PFS instrument">
           </figure>
+
+          <br>
+          <header>
+            <h3>Problem</h3>
+          </header>
+          <p>
+            For every night of scheduled observations, the PFS will conduct some small number of exposures $T \sim \mathcal{O}(10^1)$, during which each of $K \sim \mathcal{O}(10^3)$ fibers on the instrument will observe a galaxy. Each of $N \sim \mathcal{O}(10^4)$ galaxies are grouped by intrinsic astrophysical properties into <i>classes</i>, and a galaxy's class determines the integration time (i.e. number of exposures) required for it to be completely observed. 
+          </p>
+
+          <p>
+            Here is the principal question which I and my advisor, Peter Melchior, seek to address:
+          </p>
+          <blockquote>
+            Given the global objective of balancing the proportion of completed galaxies per class, how can we optimally make local assignments of fibers to galaxies during each exposure? 
+          </blockquote>
+
+          <p>
+            Formally, at a high level we would like to (<a href="https://iopscience.iop.org/article/10.1088/2632-2153/ac4d12">Wang and Melchior 2022</a>)
+          </p>
+          $$
+          \begin{align*}
+            \text{maximize} \quad & \min\left( \frac{n_1}{N_1}, \dots, \frac{n_M}{N_M} \right) \\
+            \text{subject to} \quad & n_m = \sum_{i \in \Theta_m} \sigma \left( \frac{\tau_i + 0.5 - T_m}{0.2} \right) \\
+            & \forall i: \tau_i = \min \left( \sum_{k \in \Phi_i} t_{ik}, T_{\text{max}} \right) \\
+            & \forall k: \sum_{i \in \Psi_k} t_{ik} \leqslant T \\
+            & \forall i, k: t_{ik} \in [0, T_{\text{max}}] \cap \mathbb{Z}
+          \end{align*}
+          $$
+
+          <p>
+            where $\Theta_m$ is the $m$-th galaxy class, $\tau_i$ is the effective integration time received by the $i$-th galaxy, $t_{ik}$ is the contribution of fiber $k$ to the aforementioned time, $\Psi_k$ is the set of galaxies which fiber $k$ observes, and $T_{\max}$ is the absolute maximum amount of time a single galaxy should ever receive.
+          </p>
+
+          <p>
+            This combinatorial optimization is extremely hard; in fact, it is <i>NP-hard</i>. Given the high-dimensional nature of the data, traditional algorithms will be insufficient for such a task. 
+          </p>
+
+          <p>
+            However, even after solving this problem, there are yet issues remaining. Most importantly, we still don't know the exposure-level assignments! For instance, it may very well be optimal that fiber $k$ should spend $t_{ik}$ on galaxy $i$, but how do we decide the binary decision variables $t_{ikl}$ for whether fiber $k$ should observe galaxy $i$ during any particular exposure $l$? Do feasible $t_{ikl}$ always even exist, given our $t_{ik}$?
+          </p>
+
+          <p>
+            The latter question is answered in the affirmative by Wang and Melchior (2022), but the former question is the main impetus for my research contributions in this domain. 
+          </p>
+
+          <header>
+            <h3>Graph Neural Networks</h3>
+          </header>
+
+          <p>
+            TODO!
+          </p>
+
+          <br>
+          <hr>
+          <br>
+          <p>
+            Sources: 
+          </p>
+          <ul style="margin-left: 20px;">
+            <li style="list-style-type: disc; display: list-item;">
+              Figure 1: Kavli Institute, see https://pfs.ipmu.jp/instrumentation.html. 
+            </li>
+          </ul>
         </section>
       </article>
 

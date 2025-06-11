@@ -1041,8 +1041,18 @@ main {
 }
 
 
+/*-----------------------------------*\
+  #RESEARCH
+\*-----------------------------------*/
 
-
+blockquote {
+  border-left: 4px solid #ccc;
+  margin: 1em 0;
+  padding-left: 1em;
+  font-style: italic;
+  /* color: #FFD06B; */
+  color: #F0F0F0;
+}
 
 /*-----------------------------------*\
   #BLOG
