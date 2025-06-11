@@ -1086,7 +1086,7 @@ blockquote {
 
 /* BLOG POST SINGLE IMAGE */
 .blog-post-image {
-  width: 75%;
+  width: 95%;
   height: auto;
   overflow: hidden;
   display: block;
