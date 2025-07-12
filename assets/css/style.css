@@ -158,7 +158,10 @@ html { font-family: var(--ff-poppins); }
 body { background: var(--smoky-black); }
 
 
-
+ol li {
+  list-style-type: decimal;
+  margin-left: 1.5em;
+}
 
 
 /*-----------------------------------*\
@@ -1212,7 +1215,18 @@ blockquote {
 }
 
 
-
+/*-----------------------------------*\
+  #PROBLEM BOX STYLE
+\*-----------------------------------*/
+.problem-box {
+  border: 2.5px solid #ffc161;
+  padding: 15px;
+  margin: 20px 0;
+  border-radius: 5px;
+  background-color: #F7E5C3;
+  color: #000;
+  overflow-x: auto;
+}
 
 
 /*-----------------------------------*\

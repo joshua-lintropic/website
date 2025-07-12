@@ -124,17 +124,17 @@
             Researchers from <a href="https://pfs.ipmu.jp/people.html">all over the world</a> are working together to construct a first-of-its-kind instrument that can conduct a spectrographic survey "large enough" to precisely identify these causal relationships. Its observations will test our theories of dark matter, illuminate the life cycles of black holes, and trace "reionization" &mdash; the moment when the first stars flooded space with ultraviolet light, lifting the fog of the cosmic "dark ages."
           </p>
 
-          <figure class="blog-post-image">
+          <!-- <figure class="blog-post-image">
             <img src="galaxy-evolution/pfs-instrument.webp" alt="PFS instrument">
-          </figure>
+          </figure> -->
 
-          <br>
-          <br>
+          <!-- <br> -->
+          <!-- <br> -->
           <header>
             <h3>Problem</h3>
           </header>
           <p>
-            For every night of scheduled observations, the PFS will conduct some small number of exposures $T \sim \mathcal{O}(10^1)$, during which each of $K \sim \mathcal{O}(10^3)$ fibers on the instrument will observe a galaxy. Each of $I \sim \mathcal{O}(10^4)$ galaxies are grouped by intrinsic astrophysical properties into <i>classes</i>, and a galaxy's class determines the integration time (i.e. number of exposures) required for it to be completely observed. Notably, any given fiber has access to <i>some</i>, but not necessarily all, galaxies. 
+            For every night of scheduled observations, the PFS will conduct some small number of exposures $T \sim \mathcal{O}(10^1)$, during which each of $K \sim \mathcal{O}(10^3)$ fibers on the instrument will observe a galaxy. Each of $I \sim \mathcal{O}(10^5)$ galaxies are grouped by intrinsic astrophysical properties into <i>classes</i>, and a galaxy's class determines the integration time (i.e. number of exposures) required for it to be completely observed. Notably, any given fiber has access to <i>some</i>, but not necessarily all, galaxies. 
           </p>
 
           <p>
@@ -145,24 +145,29 @@
           </blockquote>
 
           <p>
-            Explicitly, suppose we denote $\mathcal{I}$ the set of galaxies, $\mathcal{K}$ the set of fibers, and $\mathcal{L}$ the set of exposures &mdash; which have cardinalities $I, K, L$ respectively. Let the galaxies be partitioned into $M$ classes $\{\Theta_m\}_{m \in \mathcal{M}}$, each with $N_m := |\Theta_m|$ galaxies, based on their shared required observation time $T_m$. Compactly, the problem we'd like to solve is
+            Explicitly, suppose we denote $\mathcal{I}$ the set of galaxies, $\mathcal{K}$ the set of fibers, and $\mathcal{L}$ the set of exposures. Let the galaxies be partitioned into $M$ classes $\{\Theta_m\}_{m \in \mathcal{M}}$, each with $N_m := |\Theta_m|$ galaxies, based on their shared required observation time $T_m$. Concretely, the problem we'd like to solve (henceforth denoted $\text{PFS}$) is
             <!-- (<a href="https://iopscience.iop.org/article/10.1088/2632-2153/ac4d12">Wang and Melchior 2022</a>) -->
           </p>
-          $$
-          \begin{align*}
-          \operatorname*{maximize}_{\substack{t_{ikl} \in \{0,1\}}} \quad 
-          & \min_{m \in \mathcal{M}} \Big\{ N_m^{-1} \sum_{i \in \Theta_m} \mathcal{X}_{[T_m, \infty)} \Big( \sum_{k \in \mathcal{K}} \sum_{l \in \mathcal{L}} t_{ikl} \Big) \Big\} \\
-          \text{subject to} \quad 
-          & t_{ikl} \leqslant \mathcal{X}_{\Psi_k}(i),\; \sum_{k \in \mathcal{K}} t_{ikl} \leqslant 1,\; \sum_{i \in \mathcal{I}} t_{ikl} \leqslant 1
-          \end{align*}
-          $$
+          <div class="problem-box">
+            $$
+            \text{PFS} := 
+            \begin{cases}
+            \begin{align}
+            \operatorname*{maximize}_{\substack{t_{ikl} \in \{0,1\}}} \quad 
+            & \min_{m \in \mathcal{M}} \Big\{ N_m^{-1} \sum_{i \in \Theta_m} \mathcal{X}_{[T_m, \infty)} \Big( \sum_{k \in \mathcal{K}} \sum_{l \in \mathcal{L}} t_{ikl} \Big) \Big\} \\
+            \text{subject to} \quad 
+            & t_{ikl} \leqslant \mathcal{X}_{\Psi_k}(i),\; \sum_{k \in \mathcal{K}} t_{ikl} \leqslant 1,\; \sum_{i \in \mathcal{I}} t_{ikl} \leqslant 1
+            \end{align}
+            \end{cases}
+            $$
+          </div>
 
           <p>
             where $\mathcal{X}$ is the <a href="https://en.wikipedia.org/wiki/Indicator_function">characteristic function</a>. It has an intuitive interpretation, despite its technical representation: 
           </p>
           <ul style="margin-left: 20px;">
             <li style="list-style-type: disc; display: list-item;">
-              The objective desires an "equitable" distribution among the galaxy classes. It seeks to optimize the minimum fraction of galaxies completed in each class $m$ (i.e. $n_m / N_m$, where $n_m$ is the number of galaxies in $\Theta_m$ which receive at least $T_m$ observation time), across all classes. 
+              The scientific objective is an "equitable" distribution among the galaxy classes. It seeks to optimize the minimum fraction of galaxies completed in each class $m$ (i.e. $n_m / N_m$, where $n_m$ is the number of galaxies in $\Theta_m$ which receive at least $T_m$ observation time), across all classes. 
             </li>
           </ul>
           <ul style="margin-left: 20px;">
@@ -183,29 +188,72 @@
 
           <br>
           <p>
-            This combinatorial optimization is extremely hard; in fact, it is <i>NP-hard</i>. Given the high-dimensional nature of the data (the boolean tensor $t_{ikl}$ can take $2^{IKL} \geqslant \mathcal{O}(10^{30,000,000})$ possible values), brute force is out of the question, as are all traditional algorithms of which I am aware. Indeed, we'll need something &mdash; or perhaps a <i>network</i> of somethings &mdash; with enough power and the right architecture to exploit this problem's discrete structure.
+            This combinatorial optimization is extremely hard; in fact, it is <i>NP-hard</i>. Given the high-dimensional nature of the data (there are $IKL\sim \mathcal{O}(10^{10})$ binary decision variables!), brute force is effectively intractable. Instead, we'll need some more powerful tools with the right architecture to exploit this problem's discrete structure.
           </p>
-          <br>
+          <!-- <br> -->
 
           <header>
-            <h3>Graph Neural Networks</h3>
+            <h3>Class-Optimal Message Passing</h3>
+          </header>
+
+          <!-- <br> -->
+
+          <header>
+            <h4>What are MPNNs?</h4>
           </header>
 
           <p>
-            TODO!
+            Message-passing Neural Networks (MPNNs), introduced by <a href="https://arxiv.org/abs/1704.01212">Gilmer et. al.</a> at <a href="https://icml.cc/Conferences/2017/AcceptedPapers">ICML 2017</a> (and later generalized in <a href="https://arxiv.org/pdf/1806.01261">Battaglia et. al.'s</a> 2018 <code>graph-nets</code> paper) are a unified framework for interpreting learning on graphs. Let $G=(V,E)$ be an input graph represented by node features $\mathbf{h}_v^{(0)}$ and edge features $\mathbf{e}_{uv}$ for $u, v \in V$. Then learning proceeds through a sequence of $T$ discrete <i>message-passing</i> layers. In each layer $t$: 
           </p>
 
-          <br>
-          <hr>
-          <br>
+          <ol type="1">
+            <li>
+              <b>Message Phase:</b> for every edge $(u, v) \in E$, generate the message 
+              $$
+                \mathbf{m}_{uv}^{(t)} = M^{(t)}(\mathbf{h}_u^{(t-1)}, \mathbf{h}_v^{(t-1)}, \mathbf{e}_{uv})
+              $$
+
+              where $M^{(t)}$ is a learnable (often neural) function shared across edges. 
+            </li>
+            <li>
+              <b>Aggregation Phase:</b> each node $v \in V$ aggregates incoming messages with a <i>permutation-invariant</i> operator $\phi$ such as a sum, mean, or max: 
+              $$
+                \mathbf{m}_v^{(t)} = \phi_{u \in \mathcal{N}(v)} \mathbf{m}_{uv}^{(t)}
+              $$
+
+              where $\mathcal{N}(\cdot)$ represents the neighborhood of its input (i.e., all connected objects). Permutation-invariance is critical so that the network doesn't associate the arbitrary ordering of the nodes as meaningful information.
+            </li>
+            <li>
+              <b>Update Phase:</b> the node state is updated via another learnable function $U^{(t)}$:
+              $$
+                \mathbf{h}_v^{(t)} = U^{(t)}(\mathbf{h}_v^{(t-1)}, \mathbf{m}_v^{(t)})
+              $$
+            </li>
+          </ol>
+
           <p>
+            After $T$ rounds, the graph-level or node-level <i>readout</i> (e.g., pooling or attention) produces task-specific predictions, which can be used to calculate the objective and loss. 
+          </p>
+
+          <header>
+            <h4>Modeling $\text{PFS}$ with MPNNs</h4>
+          </header>
+
+          <p>
+            TODO. 
+          </p>
+
+          <!-- <br> -->
+          <!-- <hr>
+          <br> -->
+          <!-- <p>
             Sources: 
           </p>
           <ul style="margin-left: 20px;">
             <li style="list-style-type: disc; display: list-item;">
               Figure 1: Kavli Institute, see https://pfs.ipmu.jp/instrumentation.html. 
             </li>
-          </ul>
+          </ul> -->
         </section>
       </article>
 
