@@ -526,6 +526,19 @@ main {
 }
 
 /**
+ * header styles
+ */
+
+header h1,
+header h2,
+header h3 {
+  color: #B9D9EB;
+}
+header h4, 
+header h5,
+header h6
+
+/**
  * #service 
  */
 
@@ -1089,11 +1102,12 @@ blockquote {
 
 /* BLOG POST SINGLE IMAGE */
 .blog-post-image {
-  width: 95%;
+  width: 60%;
   height: auto;
   overflow: hidden;
   display: block;
   border-radius: 12px;
+  margin: 0 auto;
 }
 
 .blog-post-image img {

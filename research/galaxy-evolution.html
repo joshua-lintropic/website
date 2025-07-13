@@ -77,9 +77,17 @@
         </ul>
         <div class="separator"></div>
         <ul class="social-list">
-          <li class="social-item"><a href="https://www.facebook.com/joshua.lin.292350" class="social-link"><ion-icon name="logo-facebook"></ion-icon></a></li>
+          <li class="social-item">
+            <a href="https://github.com/joshua-lintropic" class="social-link">
+              <ion-icon name="logo-github"></ion-icon>
+            </a>
+          </li>
           <li class="social-item"><a href="https://www.linkedin.com/in/joshua-linsanity/" class="social-link"><ion-icon name="logo-linkedin"></ion-icon></a></li>
-          <li class="social-item"><a href="https://www.instagram.com/perplexed._.panda/" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
+          <li class="social-item">
+            <a href="https://x.com/lintropicjoshua" class="social-link">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+          </li>
         </ul>
       </div>
     </aside>
@@ -107,11 +115,7 @@
         <section class="about-text">
 
           <p>
-            This page is currently under construction!
-          </p>
-
-          <p>
-            <i>Published 2025-06-XX.</i>
+            <i>Published 2025-06-XX. [This page is still under construction.] </i>
           </p>
 
           <header>
@@ -134,7 +138,7 @@
             <h3>Problem</h3>
           </header>
           <p>
-            For every night of scheduled observations, the PFS will conduct some small number of exposures $T \sim \mathcal{O}(10^1)$, during which each of $K \sim \mathcal{O}(10^3)$ fibers on the instrument will observe a galaxy. Each of $I \sim \mathcal{O}(10^5)$ galaxies are grouped by intrinsic astrophysical properties into <i>classes</i>, and a galaxy's class determines the integration time (i.e. number of exposures) required for it to be completely observed. Notably, any given fiber has access to <i>some</i>, but not necessarily all, galaxies. 
+            For every night of scheduled observations, the PFS will conduct some small number of exposures $T = 42$, during which each of $K = 2394$ fibers on the instrument will observe a galaxy. Each of $I = 338900$ galaxies are grouped by intrinsic astrophysical properties into <i>classes</i>, and a galaxy's class determines the integration time (i.e. number of exposures) required for it to be completely observed. Notably, any given fiber has access to <i>some</i>, but not necessarily all, galaxies. 
           </p>
 
           <p>
@@ -145,12 +149,12 @@
           </blockquote>
 
           <p>
-            Explicitly, suppose we denote $\mathcal{I}$ the set of galaxies, $\mathcal{K}$ the set of fibers, and $\mathcal{L}$ the set of exposures. Let the galaxies be partitioned into $M$ classes $\{\Theta_m\}_{m \in \mathcal{M}}$, each with $N_m := |\Theta_m|$ galaxies, based on their shared required observation time $T_m$. Concretely, the problem we'd like to solve (henceforth denoted $\text{PFS}$) is
+            Explicitly, suppose we denote $\mathcal{I}$ the set of galaxies, $\mathcal{K}$ the set of fibers, and $\mathcal{L}$ the set of exposures. Let the galaxies be partitioned into $M$ classes $\{\Theta_m\}_{m \in \mathcal{M}}$, each with $N_m := |\Theta_m|$ galaxies, based on their shared required observation time $T_m$. Concretely, the problem we'd like to solve (henceforth denoted $\Lambda_1$) is
             <!-- (<a href="https://iopscience.iop.org/article/10.1088/2632-2153/ac4d12">Wang and Melchior 2022</a>) -->
           </p>
           <div class="problem-box">
             $$
-            \text{PFS} := 
+            \Lambda_1 := 
             \begin{cases}
             \begin{align}
             \operatorname*{maximize}_{\substack{t_{ikl} \in \{0,1\}}} \quad 
@@ -193,17 +197,11 @@
           <!-- <br> -->
 
           <header>
-            <h3>Class-Optimal Message Passing</h3>
-          </header>
-
-          <!-- <br> -->
-
-          <header>
-            <h4>What are MPNNs?</h4>
+            <h3>What are MPNNs?</h3>
           </header>
 
           <p>
-            Message-passing Neural Networks (MPNNs), introduced by <a href="https://arxiv.org/abs/1704.01212">Gilmer et. al.</a> at <a href="https://icml.cc/Conferences/2017/AcceptedPapers">ICML 2017</a> (and later generalized in <a href="https://arxiv.org/pdf/1806.01261">Battaglia et. al.'s</a> 2018 <code>graph-nets</code> paper) are a unified framework for interpreting learning on graphs. Let $G=(V,E)$ be an input graph represented by node features $\mathbf{h}_v^{(0)}$ and edge features $\mathbf{e}_{uv}$ for $u, v \in V$. Then learning proceeds through a sequence of $T$ discrete <i>message-passing</i> layers. In each layer $t$: 
+            Message-Passing Neural Networks (MPNNs), introduced by <a href="https://arxiv.org/abs/1704.01212">Gilmer et. al.</a> at <a href="https://icml.cc/Conferences/2017/AcceptedPapers">ICML 2017</a> (and later generalized in <a href="https://arxiv.org/pdf/1806.01261">Battaglia et. al.'s</a> 2018 <code>graph-nets</code> paper) are a unified framework for interpreting learning on graphs. Let $G=(V,E)$ be an input graph represented by node features $\mathbf{h}_v^{(0)}$ and edge features $\mathbf{e}_{uv}$ for $u, v \in V$. Then learning proceeds through a sequence of $T$ discrete <i>message-passing</i> layers. In each layer $t$: 
           </p>
 
           <ol type="1">
@@ -236,11 +234,95 @@
           </p>
 
           <header>
-            <h4>Modeling $\text{PFS}$ with MPNNs</h4>
+            <h3>
+              Class-Level Message Passing 
+            </h3>
           </header>
 
           <p>
-            TODO. 
+            <a href="https://www.github.com/joshua-lintropic/PFS-Class-Optimizer">
+              Github: joshua-lintropic/PFS-Class-Optimizer
+            </a>
+          </p>
+
+          <p>
+            Since the goal of $\Lambda_1$ is to assign each fiber to a particular galaxy target during a given exposure $t$, the natural structure of the problem is bipartite. One way to reduce the dimensionality of the problem comes from looking at <i>galaxy classes</i>, rather than individual galaxies. Let's take a look at properties of the classes: 
+          </p>
+
+          <div style="overflow-x: auto;">
+            <table border="1" cellspacing="0" cellpadding="10" style="border-collapse: collapse; width: auto; margin: 0 auto;">
+              <thead>
+                <tr>
+                  <th style="text-align: center; padding: 3px;"></th>
+                  <th style="text-align: center; padding: 3px;">$C_1$</th>
+                  <th style="text-align: center; padding: 3px;">$C_2$</th>
+                  <th style="text-align: center; padding: 3px;">$C_3$</th>
+                  <th style="text-align: center; padding: 3px;">$C_4$</th>
+                  <th style="text-align: center; padding: 3px;">$C_5$</th>
+                  <th style="text-align: center; padding: 3px;">$C_6$</th>
+                  <th style="text-align: center; padding: 3px;">$C_7$</th>
+                  <th style="text-align: center; padding: 3px;">$C_8$</th>
+                  <th style="text-align: center; padding: 3px;">$C_9$</th>
+                  <th style="text-align: center; padding: 3px;">$C_{10}$</th>
+                  <th style="text-align: center; padding: 3px;">$C_{11}$</th>
+                  <th style="text-align: center; padding: 3px;">$C_{12}$</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="text-align: center; padding: 3px;">$T_m$</td>
+                  <td style="text-align: center; padding: 3px;">2</td>
+                  <td style="text-align: center; padding: 3px;">2</td>
+                  <td style="text-align: center; padding: 3px;">2</td>
+                  <td style="text-align: center; padding: 3px;">12</td>
+                  <td style="text-align: center; padding: 3px;">6</td>
+                  <td style="text-align: center; padding: 3px;">6</td>
+                  <td style="text-align: center; padding: 3px;">12</td>
+                  <td style="text-align: center; padding: 3px;">6</td>
+                  <td style="text-align: center; padding: 3px;">3</td>
+                  <td style="text-align: center; padding: 3px;">6</td>
+                  <td style="text-align: center; padding: 3px;">12</td>
+                  <td style="text-align: center; padding: 3px;">8</td>
+                </tr>
+                <tr>
+                  <td style="text-align: center; padding: 5px;">$N_m$</td>
+                  <td style="text-align: center; padding: 5px;">68200</td>
+                  <td style="text-align: center; padding: 5px;">69300</td>
+                  <td style="text-align: center; padding: 5px;">96300</td>
+                  <td style="text-align: center; padding: 5px;">14400</td>
+                  <td style="text-align: center; padding: 5px;">22000</td>
+                  <td style="text-align: center; padding: 5px;">8300</td>
+                  <td style="text-align: center; padding: 5px;">14000</td>
+                  <td style="text-align: center; padding: 5px;">22000</td>
+                  <td style="text-align: center; padding: 5px;">7400</td>
+                  <td style="text-align: center; padding: 5px;">4500</td>
+                  <td style="text-align: center; padding: 5px;">2800</td>
+                  <td style="text-align: center; padding: 5px;">9700</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <br>
+
+          <p>
+            Since there are only $M = 12$ classes, while there are $I = \sum_{m \in \mathcal{M}} N_m = 338900$ galaxies, constructing our graph with fibers and classes reduces the number of nodes in the bipartite graph by over a factor of a hundred! 
+          </p>  
+
+          <figure class="blog-post-image">
+            <img src="../assets/images/class_bipartite.webp" alt="Bipartite graph representation of galaxy classes" />
+          </figure>
+          <br>
+          
+          <p>
+            The remaining question, then, is to what extent this tractability improvement sacrifices correctness. To that end, the following fact will be important: 
+          </p>
+
+          <blockquote>
+            Almost all galaxies are within the field of view of only a single fiber. 
+          </blockquote>
+
+          <p>
+            A priori, a potential concern 
           </p>
 
           <!-- <br> -->
