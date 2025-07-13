@@ -68,6 +68,6 @@ nx.draw_networkx_edges(G, pos, edgelist=edge_list, alpha=0.6)
 # plot metadata
 nx.draw_networkx_labels(G, pos, font_size=9)
 plt.axis('off')
-plt.title(f"PFS Class-Level Graph Connectivity", pad=5, fontsize=18)
+plt.title(f"PFS Class-Level Bipartite Graph", pad=5, fontsize=18)
 plt.tight_layout()
 plt.savefig('../assets/images/class_bipartite.webp')

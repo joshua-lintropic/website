@@ -534,7 +534,9 @@ header h2,
 header h3 {
   color: #B9D9EB;
 }
-header h4, 
+header h4 {
+  margin-bottom: 0.0em;
+}
 header h5,
 header h6
 

@@ -234,16 +234,13 @@
           </p>
 
           <header>
-            <h3>
-              Class-Level Message Passing 
+            <h3 style="margin-bottom: 0.5em;">
+              Class-Level Message-Passing
             </h3>
+            <h4>
+              Graph Modeling
+            </h4>
           </header>
-
-          <p>
-            <a href="https://www.github.com/joshua-lintropic/PFS-Class-Optimizer">
-              Github: joshua-lintropic/PFS-Class-Optimizer
-            </a>
-          </p>
 
           <p>
             Since the goal of $\Lambda_1$ is to assign each fiber to a particular galaxy target during a given exposure $t$, the natural structure of the problem is bipartite. One way to reduce the dimensionality of the problem comes from looking at <i>galaxy classes</i>, rather than individual galaxies. Let's take a look at properties of the classes: 
@@ -308,21 +305,74 @@
             Since there are only $M = 12$ classes, while there are $I = \sum_{m \in \mathcal{M}} N_m = 338900$ galaxies, constructing our graph with fibers and classes reduces the number of nodes in the bipartite graph by over a factor of a hundred! 
           </p>  
 
+          <p>
+            The construction of our graph, then, will be as follows:
+          </p>
+
+          <ol type="1">
+            <li>
+              The left part $\mathcal{K}$ will represent fiber nodes. 
+            </li>
+            <li>
+              The right part $\mathcal{M}$ will represent class nodes. 
+            </li>
+          </ol>
+          <br>
+
+          <p>
+            The remaining question, then, is what the connectivity of the bipartite graph will be, and to what extent this model impacts correctness. To that end, the following (empirically true!) assumption will be useful: 
+          </p>
+
+          <blockquote>
+            Galaxies are uniformly distributed throughout the fibers' fields of view. 
+          </blockquote>
+
+          <p>
+            An important consequence of this assumption is that most galaxies will be only observable by exactly one fiber, and furthermore that each fiber will have an abundance of galaxies to observe from every class, should it choose to do so. As a direct result, we can now fully describe our graph by specifying:
+          </p>
+
+          <ol type="1" start="3">
+            <li>
+              The graph connectivity will be <i>complete.</i>
+            </li>
+          </ol>
+          <br>
+
+          <p>
+            The point of this graph construction is that every fiber will predict a weight for every class, denoting the number of galaxies from that class it will observe. Because our objective depends on class-completion, not individual galaxies, and is independent of the order of observation, this collection of weights will specify a feasible solution.
+          </p>
+
+          <p>
+            In reality, there will be an intra-class ranking of galaxies that we can use to select galaxies from each class, and generally for stability we ought to complete "long-run" &mdash; large $T_m$ &mdash; targets first. But the point is that once we have the per-fiber class numbers, we may further tune these parameters to find a close-to-optimal solution. 
+          </p>
+
+          <p>
+            Note that because of our assumption that each galaxy is observable by exactly one fiber, and also due to the abundance of galaxies relative to fiber-exposures ($I\gg KL$), we can be assured that any galaxy which fiber $k$ chooses to observe will be distinct from any other galaxy which fiber $k'$ chooses to observe.
+          </p>
+          
+          <p>
+            So, onto the engineering front! How can we turn this graph model into an MPNN? 
+          </p>
+
           <figure class="blog-post-image">
             <img src="../assets/images/class_bipartite.webp" alt="Bipartite graph representation of galaxy classes" />
           </figure>
           <br>
           
+          <header>
+            <h4>
+              Message-Passing Layers
+            </h4>
+          </header>
+
           <p>
-            The remaining question, then, is to what extent this tractability improvement sacrifices correctness. To that end, the following fact will be important: 
+            <a href="https://github.com/joshua-lintropic/PFS-Class-Optimizer/tree/main">
+              Github: joshua-lintropic/PFS-Class-Optimizer
+            </a>
           </p>
 
-          <blockquote>
-            Almost all galaxies are within the field of view of only a single fiber. 
-          </blockquote>
-
           <p>
-            A priori, a potential concern 
+            TODO. 
           </p>
 
           <!-- <br> -->
