@@ -361,31 +361,60 @@
           
           <header>
             <h4>
-              Message-Passing Layers
+              Defining the Lagrangian
             </h4>
           </header>
 
           <p>
-            <a href="https://github.com/joshua-lintropic/PFS-Class-Optimizer/tree/main">
-              Github: joshua-lintropic/PFS-Class-Optimizer
-            </a>
+            Our immediate task is to define a loss function. The <a href="https://en.wikipedia.org/wiki/Lagrange_multiplier">Lagrangian</a> that we'll construct should: 
           </p>
+
+          <ol type="1">
+            <li>
+              Reflect our modeling choice of optimizing the number of galaxies per class per fiber $n_{km}$ rather than the binary variables $t_{ikl}$. 
+            </li>
+            <li>
+              Replace the discrete aspects (characteristic function, hard-counts $n_{km}$) with smooth relaxations, so that the loss is differentiable.
+            </li>
+          </ol>
+          <br>
 
           <p>
-            TODO. 
+            The first requirement can be met by formalizing our prior discussion of the graph model: 
           </p>
 
-          <!-- <br> -->
-          <!-- <hr>
-          <br> -->
-          <!-- <p>
-            Sources: 
+          <div class="problem-box">
+            $$
+            \Lambda_2 := 
+            \begin{cases}
+            \begin{align}
+            \operatorname*{maximize}_{\substack{n_{km} \in \mathbb{N} \cup \{0\}}} \quad 
+            & \min_{m \in \mathcal{M}} \Big\{ N_m^{-1} \sum_{k\in \mathcal{K}} n_{km} \Big\} \\
+            \text{subject to} \quad 
+            & \sum_{m \in \mathcal{M}} n_{km} T_m \leq T
+            \end{align}
+            \end{cases}
+            $$
+          </div>
+
+          <p>
+            That's a lot less scary! To meet the second requirement, though, it's actually simpler to reformulate in terms of the <i>times</i> that each fiber will provide each class, $t_{km} := n_{km} T_m$: 
           </p>
-          <ul style="margin-left: 20px;">
-            <li style="list-style-type: disc; display: list-item;">
-              Figure 1: Kavli Institute, see https://pfs.ipmu.jp/instrumentation.html. 
-            </li>
-          </ul> -->
+
+          <div class="problem-box">
+            $$
+            \Lambda_3 := 
+            \begin{cases}
+            \begin{align}
+            \operatorname*{maximize}_{\substack{t_{km} \in \mathbb{N} \cup \{0\}}} \quad 
+            & \min_{m \in \mathcal{M}} \Big\{ N_m^{-1} \sum_{k\in \mathcal{K}} f_\alpha(t_{km} T_m^{-1}) \Big\} \\
+            \text{subject to} \quad 
+            & \sum_{m \in \mathcal{M}} t_{km} - T \leq 0
+            \end{align}
+            \end{cases}
+            $$
+          </div>
+
         </section>
       </article>
 
