@@ -434,13 +434,27 @@
           $$
             L(t_{11}, \dots, t_{KM}) 
             = - \min_{m \in \mathcal{M}} \left\{ N_m^{-1} \sum_{k \in \mathcal{K}} f_\alpha(t_{km} T_m^{-1}) \right\}
-              + w \cdot p\left(\sum_{m \in \mathcal{M}} t_{km} - T \right)^2
+              + w \cdot p\left(\sum_{m \in \mathcal{M}} t_{km} - T \right)
           $$
 
-          where $p = \operatorname*{LeakyReLU}^2$ to penalize overtime and $w \geq 0$ is a weight, and 
+          where $p = \operatorname*{LeakyReLU}^2$ is a penalty function to (smoothly) penalize overtime and $w \geq 0$ is a weight, and 
           $$
             f_{\alpha}(x) = x + \frac{1}{\pi} \arctan \left( \frac{e^{-1/\alpha} \sin(2\pi x)}{1 - e^{-1/\alpha}\cos(2\pi x)} \right) - \frac{1}{\pi} \arctan \left( \frac{e^{-1/\alpha}}{1-e^{-1/\alpha}} \right)
           $$
+
+          <p>
+            The functions $f_\alpha$ are applications of classic tricks in complex analysis, which we'll explore below. Afterwards, onto the structure of the MPNN! 
+          </p>
+
+          <header>
+            <h4>
+              Complex-Analytic Construction of $\{f_\alpha\}_{\alpha \geq 0}$ (Optional)
+            </h4>
+          </header>
+
+          <p>
+            TODO.
+          </p>
 
         </section>
       </article>
