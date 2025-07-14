@@ -416,10 +416,31 @@
           </div>
 
           <p>
-            Here, $\{f_\alpha\}_{\alpha \in \mathbb{R}^+}$ is a family of functions with the following property: $f_\alpha \to \text{id}$ as $\alpha \to 0^+$, while $f_\alpha \to \lfloor \cdot \rfloor$ as $\alpha \to \infty$. During training, we'll start by relaxing the parameter $\alpha = 0$ (no discretization) and then increase $\alpha$ to a desirable sharpness. The version of $f_\alpha$ we'll use is graphed below. Try pressing the "play" button to automatically vary $a$ from $0$ to $20$! Even at a relatively small value of $a$, the approximation to the floor function is rather precise. 
+            Here, $\{f_\alpha : \mathbb{R} \to \mathbb{R}\}_{\alpha \geq 0}$ is a family of functions with the following property: $f_\alpha \to \text{id}$ as $\alpha \to 0^+$, while $f_\alpha \to \lfloor \cdot \rfloor$ as $\alpha \to \infty$. During training, we'll start by relaxing the parameter $\alpha = 0$ (no discretization) and then increase $\alpha$ to a desirable sharpness. 
+          </p>
+            
+          <p>
+            The version of $f_\alpha$ we'll use is graphed below. Try pressing the "play" button to automatically vary $\alpha$ from $0$ to $20$. Notice that even at $\alpha = 10$, the approximation to the floor function is rather good. 
           </p>
 
           <iframe src="https://www.desmos.com/calculator/qccszslg9b" width="100%" style="min-height:500px"></iframe> 
+
+          <br>
+          <br>
+          <p>
+            Therefore our Lagrangian loss function is 
+          </p>
+
+          $$
+            L(t_{11}, \dots, t_{KM}) 
+            = - \min_{m \in \mathcal{M}} \left\{ N_m^{-1} \sum_{k \in \mathcal{K}} f_\alpha(t_{km} T_m^{-1}) \right\}
+              + w \cdot p\left(\sum_{m \in \mathcal{M}} t_{km} - T \right)^2
+          $$
+
+          where $p = \operatorname*{LeakyReLU}^2$ to penalize overtime and $w \geq 0$ is a weight, and 
+          $$
+            f_{\alpha}(x) = x + \frac{1}{\pi} \arctan \left( \frac{e^{-1/\alpha} \sin(2\pi x)}{1 - e^{-1/\alpha}\cos(2\pi x)} \right) - \frac{1}{\pi} \arctan \left( \frac{e^{-1/\alpha}}{1-e^{-1/\alpha}} \right)
+          $$
 
         </section>
       </article>
