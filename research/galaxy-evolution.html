@@ -361,7 +361,7 @@
 
           <header>
             <h4>
-              Defining the Lagrangian
+              The Lagrangian
             </h4>
           </header>
 
@@ -398,7 +398,7 @@
           </div>
 
           <p>
-            That's a lot less scary! To meet the second requirement of smoothness, though, the gradients are more meaningful if we reformulate in terms of the <i>times</i> that each fiber will provide each class, $t_{km} := n_{km} T_m$: 
+            That's a lot less scary than $\Lambda_1$! To meet the second requirement of smoothness, though, the gradients are more meaningful if we reformulate in terms of the <i>times</i> that each fiber will provide each class, $t_{km} := n_{km} T_m$: 
           </p>
 
           <div class="problem-box">
@@ -448,12 +448,42 @@
 
           <header>
             <h4>
-              Complex-Analytic Construction of $\{f_\alpha\}_{\alpha \geq 0}$ (Optional)
+              Softfloor Construction (Optional)
             </h4>
           </header>
 
           <p>
-            TODO.
+            Our goal is to conjure a family of functions $\{f_\alpha : \mathbb{R} \to \mathbb{R}\}_{\alpha \geq 0}$ such that $\lim_{\alpha \to 0^+} f_\alpha(x) = x$, $\lim_{\alpha \to \infty} f_\alpha(x) = \lfloor x \rfloor$, and $f_\alpha \in C^\infty(\mathbb{R})$ for $\alpha \geq 0$. For a well-articulated exposition on branches, consider Chapter 3 of Stein and Shakarchi's <i>Complex Analysis</i>, from the <i>Princeton Lectures in Analysis</i> series.
+          </p>
+            
+          <p>
+            Let $\lfloor x \rfloor = x - \{x\}$, where $\{x\} \equiv x \, \operatorname*{mod}\, 1$ denotes the fractional part, which is discontinuous precisely at $\mathbb{Z}$. For each $r \in (0, 1)$ define 
+          </p>
+
+          $$
+            \varphi_r(x) := - \frac{1}{\pi} \Im \left( \log(1 - re^{2\pi ix}) \right)
+            \equiv - \frac{1}{\pi} \arctan \left( \frac{r \sin(2\pi x)}{1 - r\cos(2\pi x)} \right)
+          $$
+
+          <p>
+            where $\log$ denotes the principal branch of the complex logarithm. (The equality follows from unwinding definitions.) Some observations:
+          </p>
+
+          <ol type="1">
+            <li>
+              Since $|re^{2\pi x}| = r < 1$, each $\varphi_r$ is smooth.
+            </li>
+            <li>
+              As $r \to 1^-$ it can be shown that $\varphi_r(x) \to -\frac{1}{2} + \{x\}$. 
+            </li>
+            <li>
+              As $r \to 0^+$ continuity implies $\varphi_r(x) \to 0$.
+            </li>
+          </ol>
+          <br>
+
+          <p>
+            Hence, the natural candidate is $f_r(x) = x - \varphi_r(x) + \psi_r$, where $\psi_r = - \frac{1}{\pi} \arctan(\frac{r}{1-r})$ serves as a constant correction term which tends to $-\frac{1}{2}$ as $r \to 1^-$. Thus the final task is to define a parametrization $r = e^{-1/\alpha}$, since then we have the correct behavior as $\alpha \to 0^+$ and $\alpha \to \infty$.
           </p>
 
           <header>
