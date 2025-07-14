@@ -342,6 +342,11 @@
             The point of this graph construction is that every fiber will predict a weight for every class, denoting the number of galaxies from that class it will observe. Because our objective depends on class-completion, not individual galaxies, and is independent of the order of observation, this collection of weights will specify a feasible solution.
           </p>
 
+          <figure class="blog-post-image">
+            <img src="../assets/images/class_bipartite.webp" alt="Bipartite graph representation of galaxy classes" />
+          </figure>
+          <br>
+          
           <p>
             In reality, there will be an intra-class ranking of galaxies that we can use to select galaxies from each class, and generally for stability we ought to complete "long-run" &mdash; large $T_m$ &mdash; targets first. But the point is that once we have the per-fiber class numbers, we may further tune these parameters to find a close-to-optimal solution. 
           </p>
@@ -354,11 +359,6 @@
             So, onto the engineering front! How can we turn this graph model into an MPNN? 
           </p>
 
-          <figure class="blog-post-image">
-            <img src="../assets/images/class_bipartite.webp" alt="Bipartite graph representation of galaxy classes" />
-          </figure>
-          <br>
-          
           <header>
             <h4>
               Defining the Lagrangian
@@ -420,7 +420,7 @@
           </p>
             
           <p>
-            The version of $f_\alpha$ we'll use is graphed below. Try pressing the "play" button to automatically vary $\alpha$ from $0$ to $20$. Notice that even at $\alpha = 10$, the approximation to the floor function is rather good. 
+            The version of $f_\alpha$ we'll use is graphed below (the motivation comes from complex analysis, explored below). Try pressing the "play" button to automatically vary $\alpha$ from $0$ to $20$. Notice that even at $\alpha = 10$, the approximation to the floor function is rather good. 
           </p>
 
           <iframe src="https://www.desmos.com/calculator/qccszslg9b" width="100%" style="min-height:500px"></iframe> 
@@ -443,7 +443,7 @@
           $$
 
           <p>
-            The functions $f_\alpha$ are applications of classic tricks in complex analysis, which we'll explore below. Afterwards, onto the structure of the MPNN! 
+             Now, we're almost at the crux of this problem: the Message-Passing Layers themselves! We'll motivate the $f_\alpha$ and then discuss what messages are being passed in our network. 
           </p>
 
           <header>
