@@ -739,12 +739,23 @@ header h6
 
 .modal-title { margin-bottom: 4px; }
 
-.modal-content time {
+.modal-subtitle {
   font-size: var(--fs-6);
   color: var(--light-gray-70);
   font-weight: var(--fw-300);
   margin-bottom: 10px;
+  font-style: italic;
 }
+.modal-subtitle:empty { display: none; }
+
+.testimonials [data-testimonials-subtitle] { display: none; }
+
+/* .modal-content time {
+  font-size: var(--fs-6);
+  color: var(--light-gray-70);
+  font-weight: var(--fw-300);
+  margin-bottom: 10px;
+} */
 
 .modal-content p {
   color: var(--light-gray);

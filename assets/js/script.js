@@ -58,6 +58,7 @@
     const modalImg   = modalContainer.querySelector("[data-modal-img]");
     const modalTitle = modalContainer.querySelector("[data-modal-title]");
     const modalText  = modalContainer.querySelector("[data-modal-text]");
+    const modalSubtitle = modalContainer.querySelector("[data-modal-subtitle]");
     const modalCloseBtn = modalContainer.querySelector("[data-modal-close-btn]");
     const overlay       = document.querySelector("[data-overlay]");
     const testimonialCards = document.querySelectorAll("[data-testimonials-item]");
@@ -69,9 +70,10 @@
 
     testimonialCards.forEach(card => {
       card.addEventListener("click", () => {
-        const avatar = card.querySelector("[data-testimonials-avatar]");
-        const title  = card.querySelector("[data-testimonials-title]");
-        const text   = card.querySelector("[data-testimonials-text]");
+        const avatar   = card.querySelector("[data-testimonials-avatar]");
+        const title    = card.querySelector("[data-testimonials-title]");
+        const text     = card.querySelector("[data-testimonials-text]");
+        const subtitle = card.querySelector("[data-testimonials-subtitle]");
 
         if (avatar) {
           modalImg.src = avatar.src;
@@ -79,6 +81,7 @@
         }
         modalTitle.innerHTML = title?.innerHTML ?? "";
         modalText.innerHTML  = text?.innerHTML  ?? "";
+        if (modalSubtitle) modalSubtitle.textContent = subtitle?.textContent?.trim() || "";
 
         toggleModal();
       });
