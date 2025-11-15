@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog – Hippo's Vaccination</title>
+
+  <!-- favicon -->
+  <link rel="shortcut icon" href="../assets/images/logo.ico" type="image/x-icon">
+
+  <!-- core styles -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <main>
+
+    <!-- ───────────────── SIDEBAR ───────────────── -->
+    <!-- identical markup copied from index.html for consistent styling -->
+    <aside class="sidebar" data-sidebar>
+      <div class="sidebar-info">
+        <figure class="avatar-box">
+          <img src="../assets/images/my-pfp.webp" alt="Joshua Lin" width="80" />
+        </figure>
+        <div class="info-content">
+          <h1 class="name" title="Joshua Lin">Joshua Lin</h1>
+          <p class="title">Aspiring Researcher</p>
+        </div>
+        <button class="info_more-btn" data-sidebar-btn>
+          <span>Show Contacts</span>
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
+      </div>
+      <!-- …contacts + socials identical to index.html… -->
+      <div class="sidebar-info_more">
+        <div class="separator"></div>
+        <ul class="contacts-list">
+          <li class="contact-item">
+            <div class="icon-box"><ion-icon name="mail-outline"></ion-icon></div>
+            <div class="contact-info">
+              <p class="contact-title">Email</p>
+              <a href="mailto:joshua.lin@princeton.edu" class="contact-link">joshua.lin@princeton.edu</a>
+            </div>
+          </li>
+          <li class="contact-item">
+            <div class="icon-box"><ion-icon name="phone-portrait-outline"></ion-icon></div>
+            <div class="contact-info">
+              <p class="contact-title">Phone</p>
+              <a href="tel:+15596910093" class="contact-link">+1&nbsp;(559)&nbsp;691-0093</a>
+            </div>
+          </li>
+          <li class="contact-item">
+            <div class="icon-box"><ion-icon name="calendar-outline"></ion-icon></div>
+            <div class="contact-info">
+              <p class="contact-title">Birthday</p>
+              <time datetime="2004-12-19">December&nbsp;19,&nbsp;2004</time>
+            </div>
+          </li>
+          <li class="contact-item">
+            <div class="icon-box"><ion-icon name="location-outline"></ion-icon></div>
+            <div class="contact-info">
+              <p class="contact-title">Location</p>
+              <address>Princeton,&nbsp;NJ, USA</address>
+            </div>
+          </li>
+        </ul>
+        <div class="separator"></div>
+        <ul class="social-list">
+          <li class="social-item">
+            <a href="https://github.com/joshua-lintropic" class="social-link">
+              <ion-icon name="logo-github"></ion-icon>
+            </a>
+          </li>
+          <li class="social-item"><a href="https://www.linkedin.com/in/joshua-linsanity/" class="social-link"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+          <li class="social-item">
+            <a href="https://x.com/lintropicjoshua" class="social-link">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+
+    <!-- ──────────────── MAIN CONTENT ──────────────── -->
+    <div class="main-content">
+
+      <!-- NAVBAR -->
+      <nav class="navbar">
+        <ul class="navbar-list">
+          <li class="navbar-item"><a href="/#about" class="navbar-link" data-nav-link>About</a></li>
+          <li class="navbar-item"><a href="/#resume" class="navbar-link" data-nav-link>Resume</a></li>
+          <li class="navbar-item"><a href="/#research" class="navbar-link" data-nav-link>Research</a></li>
+          <li class="navbar-item"><a href="/#blog" class="navbar-link" data-nav-link>Blog</a></li>
+          <!-- <li class="navbar-item"><a href="/#contact" class="navbar-link" data-nav-link>Contact</a></li> -->
+        </ul>
+      </nav>
+
+      <!-- BLOG POST BODY -->
+      <article class="about active" data-page="blog-post">
+        <header>
+          <h2 class="h2 article-title">Hippo&#39;s Vaccination Day</h2>
+        </header>
+        <section class="about-text">
+          <p>
+            <i>Published 2025-11-15.</i>
+          </p>
+          <p>
+            Hippo was vaccinated today! After a thorough checkup, the vet gave her the shot. Hippo took it well — not a single complaint! She gladly accepted a treat afterwards, of course. 
+          </p>
+          <figure class="blog-post-carousel">
+            <ul class="carousel-list">
+              <li class="carousel-item">
+                <img src="./hippo/2025-11-checkup-pre.webp" alt="Hippo at the vet for her checkup" />
+                <figcaption>Waiting for the vet 👀</figcaption>
+              </li>
+              <li class="carousel-item">
+                <img src="./hippo/2025-11-checkup-weighed.webp" alt="Hippo being weighed at the vet" />
+                <figcaption>Officially weighed!</figcaption>
+              </li>
+            </ul>
+          </figure>
+        </section>
+      </article>
+
+    </div><!-- /.main-content -->
+  </main>
+
+  <!-- core JS + icons (kept identical to index.html) -->
+  <script src="../assets/js/script.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
