@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <div class="info-content">
       <h1 class="name" title="Joshua Lin">Joshua Lin</h1>
 
-      <p class="title">math + cs</p>
+      <p class="title">Math @ Princeton</p>
     </div>
 
     <button class="info_more-btn" data-sidebar-btn>
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="contact-info">
           <p class="contact-title">Location</p>
 
-          <address>Princeton, NJ, USA</address>
+          <address>New Jersey, USA</address>
         </div>
 
       </li>
