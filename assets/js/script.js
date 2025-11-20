@@ -1,21 +1,12 @@
-// --------------------------------------
-//  Joshua Lin – Portfolio / Blog
-//  Unified site script (sidebar + SPA nav + testimonials modal + blog tag filter)
-//  May 2025
-// --------------------------------------
-
 (function () {
   "use strict";
 
-  /* ---------------------------------------------------------------------
-   * Helpers
-   * -------------------------------------------------------------------*/
   const toggleActive = el => el?.classList.toggle("active");
 
   /* ---------------------------------------------------------------------
    * 1. SIDEBAR TOGGLE (works on all pages that include the sidebar)
    * -------------------------------------------------------------------*/
-  const sidebar    = document.querySelector("[data-sidebar]");
+  const sidebar = document.querySelector("[data-sidebar]");
   const sidebarBtn = document.querySelector("[data-sidebar-btn]");
   sidebarBtn?.addEventListener("click", () => toggleActive(sidebar));
 
@@ -23,7 +14,7 @@
    * 2. SINGLE‑PAGE NAVIGATION (index.html only)
    * -------------------------------------------------------------------*/
   const navLinks = document.querySelectorAll("[data-nav-link]");
-  const pages    = document.querySelectorAll("[data-page]");
+  const pages = document.querySelectorAll("[data-page]");
 
   const activatePage = (pageName = "about") => {
     pages.forEach(page => page.classList.toggle("active", page.dataset.page === pageName));
@@ -37,7 +28,7 @@
     link.addEventListener("click", () => {
       const pageName = link.textContent.trim().toLowerCase();
       if (window.location.hash.slice(1) !== pageName) {
-        window.location.hash = pageName; // triggers hashchange
+        window.location.hash = pageName;
       }
       activatePage(pageName);
     });
@@ -55,12 +46,12 @@
    * -------------------------------------------------------------------*/
   const modalContainer = document.querySelector("[data-modal-container]");
   if (modalContainer) {
-    const modalImg   = modalContainer.querySelector("[data-modal-img]");
+    const modalImg = modalContainer.querySelector("[data-modal-img]");
     const modalTitle = modalContainer.querySelector("[data-modal-title]");
-    const modalText  = modalContainer.querySelector("[data-modal-text]");
+    const modalText = modalContainer.querySelector("[data-modal-text]");
     const modalSubtitle = modalContainer.querySelector("[data-modal-subtitle]");
     const modalCloseBtn = modalContainer.querySelector("[data-modal-close-btn]");
-    const overlay       = document.querySelector("[data-overlay]");
+    const overlay = document.querySelector("[data-overlay]");
     const testimonialCards = document.querySelectorAll("[data-testimonials-item]");
 
     const toggleModal = () => {
@@ -70,9 +61,9 @@
 
     testimonialCards.forEach(card => {
       card.addEventListener("click", () => {
-        const avatar   = card.querySelector("[data-testimonials-avatar]");
-        const title    = card.querySelector("[data-testimonials-title]");
-        const text     = card.querySelector("[data-testimonials-text]");
+        const avatar = card.querySelector("[data-testimonials-avatar]");
+        const title = card.querySelector("[data-testimonials-title]");
+        const text = card.querySelector("[data-testimonials-text]");
         const subtitle = card.querySelector("[data-testimonials-subtitle]");
 
         if (avatar) {
@@ -80,7 +71,7 @@
           modalImg.alt = avatar.alt;
         }
         modalTitle.innerHTML = title?.innerHTML ?? "";
-        modalText.innerHTML  = text?.innerHTML  ?? "";
+        modalText.innerHTML = text?.innerHTML ?? "";
         if (modalSubtitle) modalSubtitle.textContent = subtitle?.textContent?.trim() || "";
 
         toggleModal();
@@ -100,11 +91,11 @@
 
     // historic misspelling support
     const selectValue = document.querySelector("[data-select-value]") ||
-                        document.querySelector("[data-selecct-value]");
+      document.querySelector("[data-selecct-value]");
 
     const dropdownItems = document.querySelectorAll("[data-select-item]");
-    const filterBtns    = document.querySelectorAll("[data-filter-btn]");
-    const posts         = document.querySelectorAll("[data-filter-item]");
+    const filterBtns = document.querySelectorAll("[data-filter-btn]");
+    const posts = document.querySelectorAll("[data-filter-item]");
 
     /* defensive check — bail if markup is incomplete */
     if (!posts.length || (!dropdownItems.length && !filterBtns.length)) return;
