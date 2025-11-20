@@ -1,6 +1,12 @@
-const assetsPath = window.assetsPath || '.';
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('DOMContentLoaded event fired.');
+  console.log('sidebar.js is loading...');
+  console.log('window.assetsPath:', window.assetsPath);
 
-const sidebarHTML = `
+  const assetsPath = window.assetsPath || '.';
+  console.log('Using assetsPath:', assetsPath);
+
+  const sidebarHTML = `
 <aside class="sidebar" data-sidebar>
 
   <div class="sidebar-info">
@@ -116,4 +122,21 @@ const sidebarHTML = `
 </aside>
 `;
 
-document.querySelector('main').insertAdjacentHTML('afterbegin', sidebarHTML);
+  console.log('Sidebar HTML length:', sidebarHTML.length);
+  console.log('Looking for main element...');
+
+  const main = document.querySelector('main');
+  console.log('Main element found:', main);
+
+  if (main) {
+    console.log('Injecting sidebar...');
+    main.insertAdjacentHTML('afterbegin', sidebarHTML);
+    console.log('Sidebar injected successfully');
+
+    // Verify injection
+    const sidebar = document.querySelector('.sidebar');
+    console.log('Sidebar element after injection:', sidebar);
+  } else {
+    console.error('Sidebar injection failed: main element not found');
+  }
+});
