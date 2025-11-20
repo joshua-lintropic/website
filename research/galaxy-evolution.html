@@ -5,47 +5,33 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Research – Prime Focus Spectrograph</title>
+  <title>Research — Prime Focus Spectrograph</title>
 
-  <!-- favicon -->
   <link rel="shortcut icon" href="../assets/images/logo.ico" type="image/x-icon">
 
-  <!-- core styles -->
   <link rel="stylesheet" href="../assets/css/style.css">
 
-  <!-- google fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <!-- latex support -->
   <script> window.MathJax = { chtml: { scale: 0.9 }, tex: { inlineMath: [['$', '$']] } }; </script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
   <main>
-
-    <!-- ───────────────── SIDEBAR ───────────────── -->
-    <!-- ───────────────── SIDEBAR (Injected via assets/js/sidebar.js) ───────────────── -->
-
-
-
-    <!-- ──────────────── MAIN CONTENT ──────────────── -->
     <div class="main-content">
 
-      <!-- NAVBAR -->
       <nav class="navbar">
         <ul class="navbar-list">
           <li class="navbar-item"><a href="/#about" class="navbar-link" data-nav-link>About</a></li>
           <li class="navbar-item"><a href="/#resume" class="navbar-link" data-nav-link>Resume</a></li>
           <li class="navbar-item"><a href="/#research" class="navbar-link" data-nav-link>Research</a></li>
           <li class="navbar-item"><a href="/#blog" class="navbar-link" data-nav-link>Blog</a></li>
-          <!-- <li class="navbar-item"><a href="/#contact" class="navbar-link" data-nav-link>Contact</a></li> -->
         </ul>
       </nav>
 
-      <!-- BLOG POST BODY -->
       <article class="about active" data-page="blog-post">
         <header>
           <h2 class="h2 article-title">Galaxy&nbsp;Evolution</h2>
@@ -73,12 +59,6 @@
             flooded space with ultraviolet light, lifting the fog of the cosmic "dark ages."
           </p>
 
-          <!-- <figure class="blog-post-image">
-            <img src="galaxy-evolution/pfs-instrument.webp" alt="PFS instrument">
-          </figure> -->
-
-          <!-- <br> -->
-          <!-- <br> -->
           <header>
             <h3>Problem</h3>
           </header>
@@ -103,7 +83,6 @@
             $\mathcal{L}$ the set of exposures. Let the galaxies be partitioned into $M$ classes $\{\Theta_m\}_{m \in
             \mathcal{M}}$, each with $N_m := |\Theta_m|$ galaxies, based on their shared required observation time
             $T_m$. Concretely, the problem we'd like to solve (henceforth denoted $\Lambda_1$) is
-            <!-- (<a href="https://iopscience.iop.org/article/10.1088/2632-2153/ac4d12">Wang and Melchior 2022</a>) -->
           </p>
           <div class="problem-box">
             $$
@@ -156,7 +135,6 @@
             effectively intractable. Instead, we'll need some more powerful tools with the right architecture to exploit
             this problem's discrete structure.
           </p>
-          <!-- <br> -->
 
           <header>
             <h3>What are MPNNs?</h3>
@@ -508,10 +486,9 @@
         </section>
       </article>
 
-    </div><!-- /.main-content -->
+    </div>
   </main>
 
-  <!-- core JS + icons (kept identical to index.html) -->
   <script>window.assetsPath = '..';</script>
   <script src="../assets/js/sidebar.js"></script>
   <script src="../assets/js/script.js"></script>
