@@ -23,119 +23,8 @@
   <main>
 
     <!-- ───────────────── SIDEBAR ───────────────── -->
-    <aside class="sidebar" data-sidebar>
+    <!-- ───────────────── SIDEBAR (Injected via assets/js/sidebar.js) ───────────────── -->
 
-      <div class="sidebar-info">
-
-        <figure class="avatar-box">
-          <img src="../assets/images/my-pfp.webp" alt="Joshua Lin" width="80">
-        </figure>
-
-        <div class="info-content">
-          <h1 class="name" title="Joshua Lin">Joshua Lin</h1>
-
-          <p class="title">math + cs</p>
-        </div>
-
-        <button class="info_more-btn" data-sidebar-btn>
-          <span>Show Contacts</span>
-
-          <ion-icon name="chevron-down"></ion-icon>
-        </button>
-
-      </div>
-
-      <div class="sidebar-info_more">
-
-        <div class="separator"></div>
-
-        <ul class="contacts-list">
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="mail-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Email</p>
-
-              <a href="mailto:joshua.lin@princeton.edu" class="contact-link">joshua.lin@princeton.edu</a>
-            </div>
-
-          </li>
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="phone-portrait-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Phone</p>
-
-              <a href="tel:+15596910093" class="contact-link">+1 (559) 691-0093</a>
-            </div>
-
-          </li>
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="school-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Education</p>
-
-                <a href="https://www.princeton.edu/" class="contact-link">Princeton University</a>
-            </div>
-
-          </li>
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="location-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Location</p>
-
-              <address>Princeton, NJ, USA</address>
-            </div>
-
-          </li>
-
-        </ul>
-
-        <div class="separator"></div>
-
-        <ul class="social-list">
-
-          <li class="social-item">
-            <a href="https://github.com/joshua-lintropic" class="social-link">
-              <ion-icon name="logo-github"></ion-icon>
-            </a>
-          </li>
-
-          <li class="social-item">
-            <a href="https://www.linkedin.com/in/joshua-linsanity/" class="social-link">
-              <ion-icon name="logo-linkedin"></ion-icon>
-            </a>
-          </li>
-
-          <li class="social-item">
-            <a href="https://x.com/lintropicjoshua" class="social-link">
-              <ion-icon name="logo-twitter"></ion-icon>
-            </a>
-          </li>
-
-        </ul>
-
-      </div>
-
-    </aside>
 
     <!-- ──────────────── MAIN CONTENT ──────────────── -->
     <div class="main-content">
@@ -161,7 +50,8 @@
             <i>Posted 2025-05-20. Updated 2025-11-15.</i>
           </p>
           <p>
-            Hi, I'm Joshua. I intend this blog to be for my own personal catharsis. My official life is located in the other parts of this website, but in the Blogs, I'll mostly write about things personally important to me. 
+            Hi, I'm Joshua. I intend this blog to be for my own personal catharsis. My official life is located in the
+            other parts of this website, but in the Blogs, I'll mostly write about things personally important to me.
           </p>
           <p>
             I guess first up is a little bit about my tastes!
@@ -203,22 +93,28 @@
             </li>
           </ul>
 
-        <br>
-        <p>
-          FWIW, I really love music. One of my most memorable experiences has been to see <i>Hamilton</i> at Broadway, and I hope to visit more often (maybe once I escape the destitute life of a college student). I'm also lucky to have heard Trifonov's Prokofiev live with the SF Philharmonic, and my life goals include witnessing one of Krystian Zimerman's iconic performances.
-        </p>
+          <br>
+          <p>
+            FWIW, I really love music. One of my most memorable experiences has been to see <i>Hamilton</i> at Broadway,
+            and I hope to visit more often (maybe once I escape the destitute life of a college student). I'm also lucky
+            to have heard Trifonov's Prokofiev live with the SF Philharmonic, and my life goals include witnessing one
+            of Krystian Zimerman's iconic performances.
+          </p>
 
-        <p>
-          On a last but unrelated note, my girlfriend and I raise the cutest bunny named Hippo — she's a fuzzy (Holland) lop from Seattle, WA who is just perfect in every way. She was born in July 2023, so (as of this writing) she's still pretty young! I hope she experiences her best life with us. 
-        </p>
+          <p>
+            On a last but unrelated note, my girlfriend and I raise the cutest bunny named Hippo — she's a fuzzy
+            (Holland) lop from Seattle, WA who is just perfect in every way. She was born in July 2023, so (as of this
+            writing) she's still pretty young! I hope she experiences her best life with us.
+          </p>
 
-        <p>
-          (ps: <i>lintropic</i> is a synthesis of <i>lin</i> and <i>entropic</i>. Given how chaotic my life has become, it seems rather fitting.)
-        </p>
+          <p>
+            (ps: <i>lintropic</i> is a synthesis of <i>lin</i> and <i>entropic</i>. Given how chaotic my life has
+            become, it seems rather fitting.)
+          </p>
 
-        <figure class="blog-post-image">
-          <img src="hippo/hippo.webp" alt="Hippo the bunny">
-        </figure>
+          <figure class="blog-post-image">
+            <img src="hippo/hippo.webp" alt="Hippo the bunny">
+          </figure>
         </section>
       </article>
 
@@ -226,6 +122,8 @@
   </main>
 
   <!-- core JS + icons (kept identical to index.html) -->
+  <script>window.assetsPath = '..';</script>
+  <script src="../assets/js/sidebar.js"></script>
   <script src="../assets/js/script.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

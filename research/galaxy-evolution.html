@@ -27,70 +27,8 @@
   <main>
 
     <!-- ───────────────── SIDEBAR ───────────────── -->
-    <!-- identical markup copied from index.html for consistent styling -->
-    <aside class="sidebar" data-sidebar>
-      <div class="sidebar-info">
-        <figure class="avatar-box">
-          <img src="../assets/images/my-pfp.webp" alt="Joshua Lin" width="80" />
-        </figure>
-        <div class="info-content">
-          <h1 class="name" title="Joshua Lin">Joshua Lin</h1>
-          <p class="title">Princeton Math '27</p>
-        </div>
-        <button class="info_more-btn" data-sidebar-btn>
-          <span>Show Contacts</span>
-          <ion-icon name="chevron-down"></ion-icon>
-        </button>
-      </div>
-      <!-- …contacts + socials identical to index.html… -->
-      <div class="sidebar-info_more">
-        <div class="separator"></div>
-        <ul class="contacts-list">
-          <li class="contact-item">
-            <div class="icon-box"><ion-icon name="mail-outline"></ion-icon></div>
-            <div class="contact-info">
-              <p class="contact-title">Email</p>
-              <a href="mailto:joshua.lin@princeton.edu" class="contact-link">joshua.lin@princeton.edu</a>
-            </div>
-          </li>
-          <li class="contact-item">
-            <div class="icon-box"><ion-icon name="phone-portrait-outline"></ion-icon></div>
-            <div class="contact-info">
-              <p class="contact-title">Phone</p>
-              <a href="tel:+15596910093" class="contact-link">+1&nbsp;(559)&nbsp;691‑0093</a>
-            </div>
-          </li>
-          <li class="contact-item">
-            <div class="icon-box"><ion-icon name="calendar-outline"></ion-icon></div>
-            <div class="contact-info">
-              <p class="contact-title">Birthday</p>
-              <time datetime="2004-12-19">December&nbsp;19,&nbsp;2004</time>
-            </div>
-          </li>
-          <li class="contact-item">
-            <div class="icon-box"><ion-icon name="location-outline"></ion-icon></div>
-            <div class="contact-info">
-              <p class="contact-title">Location</p>
-              <address>Princeton,&nbsp;NJ, USA</address>
-            </div>
-          </li>
-        </ul>
-        <div class="separator"></div>
-        <ul class="social-list">
-          <li class="social-item">
-            <a href="https://github.com/joshua-lintropic" class="social-link">
-              <ion-icon name="logo-github"></ion-icon>
-            </a>
-          </li>
-          <li class="social-item"><a href="https://www.linkedin.com/in/joshua-linsanity/" class="social-link"><ion-icon name="logo-linkedin"></ion-icon></a></li>
-          <li class="social-item">
-            <a href="https://x.com/lintropicjoshua" class="social-link">
-              <ion-icon name="logo-twitter"></ion-icon>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </aside>
+    <!-- ───────────────── SIDEBAR (Injected via assets/js/sidebar.js) ───────────────── -->
+
 
 
     <!-- ──────────────── MAIN CONTENT ──────────────── -->
@@ -115,17 +53,24 @@
         <section class="about-text">
 
           <p>
-            <i>Published 2025-06-XX. [This page is still under construction. It will be completed once I have conquered functional analysis.] </i>
+            <i>Published 2025-06-XX. [This page is still under construction. It will be completed once I have conquered
+              functional analysis.] </i>
           </p>
 
           <header>
             <h3>Introduction</h3>
           </header>
           <p>
-            The Subaru Prime Focus Spectrograph at the Mauna Kea observatory in Hawai'i seeks to answer the following <a href="https://pfs.ipmu.jp/instrumentation.html">question</a>: <i>What aspects of large-scale cosmological structure drive the formation and evolution of galaxies?</i>  
+            The Subaru Prime Focus Spectrograph at the Mauna Kea observatory in Hawai'i seeks to answer the following <a
+              href="https://pfs.ipmu.jp/instrumentation.html">question</a>: <i>What aspects of large-scale cosmological
+              structure drive the formation and evolution of galaxies?</i>
           </p>
           <p>
-            Researchers from <a href="https://pfs.ipmu.jp/people.html">all over the world</a> are working together to construct a first-of-its-kind instrument that can conduct a spectrographic survey "large enough" to precisely identify these causal relationships. Its observations will test our theories of dark matter, illuminate the life cycles of black holes, and trace "reionization" &mdash; the moment when the first stars flooded space with ultraviolet light, lifting the fog of the cosmic "dark ages."
+            Researchers from <a href="https://pfs.ipmu.jp/people.html">all over the world</a> are working together to
+            construct a first-of-its-kind instrument that can conduct a spectrographic survey "large enough" to
+            precisely identify these causal relationships. Its observations will test our theories of dark matter,
+            illuminate the life cycles of black holes, and trace "reionization" &mdash; the moment when the first stars
+            flooded space with ultraviolet light, lifting the fog of the cosmic "dark ages."
           </p>
 
           <!-- <figure class="blog-post-image">
@@ -138,61 +83,78 @@
             <h3>Problem</h3>
           </header>
           <p>
-            For every night of scheduled observations, the PFS will conduct some small number of exposures $T = 42$, during which each of $K = 2394$ fibers on the instrument will observe a galaxy. Each of $I = 338900$ galaxies are grouped by intrinsic astrophysical properties into <i>classes</i>, and a galaxy's class determines the integration time (i.e. number of exposures) required for it to be completely observed. Notably, any given fiber has access to <i>some</i>, but not necessarily all, galaxies. 
+            For every night of scheduled observations, the PFS will conduct some small number of exposures $T = 42$,
+            during which each of $K = 2394$ fibers on the instrument will observe a galaxy. Each of $I = 338900$
+            galaxies are grouped by intrinsic astrophysical properties into <i>classes</i>, and a galaxy's class
+            determines the integration time (i.e. number of exposures) required for it to be completely observed.
+            Notably, any given fiber has access to <i>some</i>, but not necessarily all, galaxies.
           </p>
 
           <p>
             Here is the principal question which I and my advisor, Peter Melchior, seek to address:
           </p>
           <blockquote>
-            Given the global objective of balancing the proportion of completed galaxies per class, how can we optimally make local assignments of fibers to galaxies during each exposure? 
+            Given the global objective of balancing the proportion of completed galaxies per class, how can we optimally
+            make local assignments of fibers to galaxies during each exposure?
           </blockquote>
 
           <p>
-            Explicitly, suppose we denote $\mathcal{I}$ the set of galaxies, $\mathcal{K}$ the set of fibers, and $\mathcal{L}$ the set of exposures. Let the galaxies be partitioned into $M$ classes $\{\Theta_m\}_{m \in \mathcal{M}}$, each with $N_m := |\Theta_m|$ galaxies, based on their shared required observation time $T_m$. Concretely, the problem we'd like to solve (henceforth denoted $\Lambda_1$) is
+            Explicitly, suppose we denote $\mathcal{I}$ the set of galaxies, $\mathcal{K}$ the set of fibers, and
+            $\mathcal{L}$ the set of exposures. Let the galaxies be partitioned into $M$ classes $\{\Theta_m\}_{m \in
+            \mathcal{M}}$, each with $N_m := |\Theta_m|$ galaxies, based on their shared required observation time
+            $T_m$. Concretely, the problem we'd like to solve (henceforth denoted $\Lambda_1$) is
             <!-- (<a href="https://iopscience.iop.org/article/10.1088/2632-2153/ac4d12">Wang and Melchior 2022</a>) -->
           </p>
           <div class="problem-box">
             $$
-            \Lambda_1 := 
+            \Lambda_1 :=
             \begin{cases}
             \begin{align}
-            \operatorname*{maximize}_{\substack{t_{ikl} \in \{0,1\}}} \quad 
-            & \min_{m \in \mathcal{M}} \Big\{ N_m^{-1} \sum_{i \in \Theta_m} \mathcal{X}_{[T_m, \infty)} \Big( \sum_{k \in \mathcal{K}} \sum_{l \in \mathcal{L}} t_{ikl} \Big) \Big\} \\
-            \text{subject to} \quad 
-            & t_{ikl} \leqslant \mathcal{X}_{\Psi_k}(i),\; \sum_{k \in \mathcal{K}} t_{ikl} \leqslant 1,\; \sum_{i \in \mathcal{I}} t_{ikl} \leqslant 1
+            \operatorname*{maximize}_{\substack{t_{ikl} \in \{0,1\}}} \quad
+            & \min_{m \in \mathcal{M}} \Big\{ N_m^{-1} \sum_{i \in \Theta_m} \mathcal{X}_{[T_m, \infty)} \Big( \sum_{k
+            \in \mathcal{K}} \sum_{l \in \mathcal{L}} t_{ikl} \Big) \Big\} \\
+            \text{subject to} \quad
+            & t_{ikl} \leqslant \mathcal{X}_{\Psi_k}(i),\; \sum_{k \in \mathcal{K}} t_{ikl} \leqslant 1,\; \sum_{i \in
+            \mathcal{I}} t_{ikl} \leqslant 1
             \end{align}
             \end{cases}
             $$
           </div>
 
           <p>
-            where $\mathcal{X}$ is the <a href="https://en.wikipedia.org/wiki/Indicator_function">characteristic function</a>. It has an intuitive interpretation, despite its technical representation: 
+            where $\mathcal{X}$ is the <a href="https://en.wikipedia.org/wiki/Indicator_function">characteristic
+              function</a>. It has an intuitive interpretation, despite its technical representation:
           </p>
           <ul style="margin-left: 20px;">
             <li style="list-style-type: disc; display: list-item;">
-              The scientific objective is an "equitable" distribution among the galaxy classes. It seeks to optimize the minimum fraction of galaxies completed in each class $m$ (i.e. $n_m / N_m$, where $n_m$ is the number of galaxies in $\Theta_m$ which receive at least $T_m$ observation time), across all classes. 
+              The scientific objective is an "equitable" distribution among the galaxy classes. It seeks to optimize the
+              minimum fraction of galaxies completed in each class $m$ (i.e. $n_m / N_m$, where $n_m$ is the number of
+              galaxies in $\Theta_m$ which receive at least $T_m$ observation time), across all classes.
             </li>
           </ul>
           <ul style="margin-left: 20px;">
             <li style="list-style-type: disc; display: list-item;">
-              The first constraint asks that each fiber $k$ only observes a predefined subset of galaxies $\Psi_k \subseteq \mathcal{I}$. 
+              The first constraint asks that each fiber $k$ only observes a predefined subset of galaxies $\Psi_k
+              \subseteq \mathcal{I}$.
             </li>
           </ul>
           <ul style="margin-left: 20px;">
             <li style="list-style-type: disc; display: list-item;">
-              The second constraint asks that in each exposure, there is at most one fiber observing each galaxy. 
+              The second constraint asks that in each exposure, there is at most one fiber observing each galaxy.
             </li>
           </ul>
           <ul style="margin-left: 20px;">
             <li style="list-style-type: disc; display: list-item;">
-              The third constraint asks that in each exposure, each fiber observes at most one galaxy. 
+              The third constraint asks that in each exposure, each fiber observes at most one galaxy.
             </li>
           </ul>
 
           <br>
           <p>
-            This combinatorial optimization is extremely hard; in fact, it is <i>NP-hard</i>. Given the high-dimensional nature of the data (there are $IKL\sim \mathcal{O}(10^{10})$ binary decision variables!), brute force is effectively intractable. Instead, we'll need some more powerful tools with the right architecture to exploit this problem's discrete structure.
+            This combinatorial optimization is extremely hard; in fact, it is <i>NP-hard</i>. Given the high-dimensional
+            nature of the data (there are $IKL\sim \mathcal{O}(10^{10})$ binary decision variables!), brute force is
+            effectively intractable. Instead, we'll need some more powerful tools with the right architecture to exploit
+            this problem's discrete structure.
           </p>
           <!-- <br> -->
 
@@ -201,36 +163,45 @@
           </header>
 
           <p>
-            Message-Passing Neural Networks (MPNNs), introduced by <a href="https://arxiv.org/abs/1704.01212">Gilmer et. al.</a> at <a href="https://icml.cc/Conferences/2017/AcceptedPapers">ICML 2017</a> (and later generalized in <a href="https://arxiv.org/pdf/1806.01261">Battaglia et. al.'s</a> 2018 <code>graph-nets</code> paper) are a unified framework for interpreting learning on graphs. Let $G=(V,E)$ be an input graph represented by node features $\mathbf{h}_v^{(0)}$ and edge features $\mathbf{e}_{uv}$ for $u, v \in V$. Then learning proceeds through a sequence of $T$ discrete <i>message-passing</i> layers. In each layer $t$: 
+            Message-Passing Neural Networks (MPNNs), introduced by <a href="https://arxiv.org/abs/1704.01212">Gilmer et.
+              al.</a> at <a href="https://icml.cc/Conferences/2017/AcceptedPapers">ICML 2017</a> (and later generalized
+            in <a href="https://arxiv.org/pdf/1806.01261">Battaglia et. al.'s</a> 2018 <code>graph-nets</code> paper)
+            are a unified framework for interpreting learning on graphs. Let $G=(V,E)$ be an input graph represented by
+            node features $\mathbf{h}_v^{(0)}$ and edge features $\mathbf{e}_{uv}$ for $u, v \in V$. Then learning
+            proceeds through a sequence of $T$ discrete <i>message-passing</i> layers. In each layer $t$:
           </p>
 
           <ol type="1">
             <li>
-              <b>Message Phase:</b> for every edge $(u, v) \in E$, generate the message 
+              <b>Message Phase:</b> for every edge $(u, v) \in E$, generate the message
               $$
-                \mathbf{m}_{uv}^{(t)} = M^{(t)}(\mathbf{h}_u^{(t-1)}, \mathbf{h}_v^{(t-1)}, \mathbf{e}_{uv})
+              \mathbf{m}_{uv}^{(t)} = M^{(t)}(\mathbf{h}_u^{(t-1)}, \mathbf{h}_v^{(t-1)}, \mathbf{e}_{uv})
               $$
 
-              where $M^{(t)}$ is a learnable (often neural) function shared across edges. 
+              where $M^{(t)}$ is a learnable (often neural) function shared across edges.
             </li>
             <li>
-              <b>Aggregation Phase:</b> each node $v \in V$ aggregates incoming messages with a <i>permutation-invariant</i> operator $\phi$ such as a sum, mean, or max: 
+              <b>Aggregation Phase:</b> each node $v \in V$ aggregates incoming messages with a
+              <i>permutation-invariant</i> operator $\phi$ such as a sum, mean, or max:
               $$
-                \mathbf{m}_v^{(t)} = \phi_{u \in \mathcal{N}(v)} \mathbf{m}_{uv}^{(t)}
+              \mathbf{m}_v^{(t)} = \phi_{u \in \mathcal{N}(v)} \mathbf{m}_{uv}^{(t)}
               $$
 
-              where $\mathcal{N}(\cdot)$ represents the neighborhood of its input (i.e., all connected objects). Permutation-invariance is critical so that the network doesn't associate the arbitrary ordering of the nodes as meaningful information.
+              where $\mathcal{N}(\cdot)$ represents the neighborhood of its input (i.e., all connected objects).
+              Permutation-invariance is critical so that the network doesn't associate the arbitrary ordering of the
+              nodes as meaningful information.
             </li>
             <li>
               <b>Update Phase:</b> the node state is updated via another learnable function $U^{(t)}$:
               $$
-                \mathbf{h}_v^{(t)} = U^{(t)}(\mathbf{h}_v^{(t-1)}, \mathbf{m}_v^{(t)})
+              \mathbf{h}_v^{(t)} = U^{(t)}(\mathbf{h}_v^{(t-1)}, \mathbf{m}_v^{(t)})
               $$
             </li>
           </ol>
 
           <p>
-            After $T$ rounds, the graph-level or node-level <i>readout</i> (e.g., pooling or attention) produces task-specific predictions, which can be used to calculate the objective and loss. 
+            After $T$ rounds, the graph-level or node-level <i>readout</i> (e.g., pooling or attention) produces
+            task-specific predictions, which can be used to calculate the objective and loss.
           </p>
 
           <header>
@@ -243,11 +214,15 @@
           </header>
 
           <p>
-            Since the goal of $\Lambda_1$ is to assign each fiber to a particular galaxy target during a given exposure $t$, the natural structure of the problem is bipartite. One way to reduce the dimensionality of the problem comes from looking at <i>galaxy classes</i>, rather than individual galaxies. Let's take a look at properties of the classes: 
+            Since the goal of $\Lambda_1$ is to assign each fiber to a particular galaxy target during a given exposure
+            $t$, the natural structure of the problem is bipartite. One way to reduce the dimensionality of the problem
+            comes from looking at <i>galaxy classes</i>, rather than individual galaxies. Let's take a look at
+            properties of the classes:
           </p>
 
           <div style="overflow-x: auto;">
-            <table border="1" cellspacing="0" cellpadding="10" style="border-collapse: collapse; width: auto; margin: 0 auto;">
+            <table border="1" cellspacing="0" cellpadding="10"
+              style="border-collapse: collapse; width: auto; margin: 0 auto;">
               <thead>
                 <tr>
                   <th style="text-align: center; padding: 3px;"></th>
@@ -302,8 +277,10 @@
           <br>
 
           <p>
-            Since there are only $M = 12$ classes, while there are $I = \sum_{m \in \mathcal{M}} N_m = 338900$ galaxies, constructing our graph with fibers and classes reduces the number of nodes in the bipartite graph by over a factor of a hundred! 
-          </p>  
+            Since there are only $M = 12$ classes, while there are $I = \sum_{m \in \mathcal{M}} N_m = 338900$ galaxies,
+            constructing our graph with fibers and classes reduces the number of nodes in the bipartite graph by over a
+            factor of a hundred!
+          </p>
 
           <p>
             The construction of our graph, then, will be as follows:
@@ -311,24 +288,27 @@
 
           <ol type="1">
             <li>
-              The left part $\mathcal{K}$ will represent fiber nodes. 
+              The left part $\mathcal{K}$ will represent fiber nodes.
             </li>
             <li>
-              The right part $\mathcal{M}$ will represent class nodes. 
+              The right part $\mathcal{M}$ will represent class nodes.
             </li>
           </ol>
           <br>
 
           <p>
-            The remaining question, then, is what the connectivity of the bipartite graph will be, and to what extent this model impacts correctness. To that end, the following (empirically true!) assumption will be useful: 
+            The remaining question, then, is what the connectivity of the bipartite graph will be, and to what extent
+            this model impacts correctness. To that end, the following (empirically true!) assumption will be useful:
           </p>
 
           <blockquote>
-            Galaxies are uniformly distributed throughout the fibers' fields of view. 
+            Galaxies are uniformly distributed throughout the fibers' fields of view.
           </blockquote>
 
           <p>
-            An important consequence of this assumption is that most galaxies will be only observable by exactly one fiber, and furthermore that each fiber will have an abundance of galaxies to observe from every class, should it choose to do so. As a direct result, we can now fully describe our graph by specifying:
+            An important consequence of this assumption is that most galaxies will be only observable by exactly one
+            fiber, and furthermore that each fiber will have an abundance of galaxies to observe from every class,
+            should it choose to do so. As a direct result, we can now fully describe our graph by specifying:
           </p>
 
           <ol type="1" start="3">
@@ -339,24 +319,32 @@
           <br>
 
           <p>
-            The point of this graph construction is that every fiber will predict a weight for every class, denoting the number of galaxies from that class it will observe. Because our objective depends on class-completion, not individual galaxies, and is independent of the order of observation, this collection of weights will specify a feasible solution.
+            The point of this graph construction is that every fiber will predict a weight for every class, denoting the
+            number of galaxies from that class it will observe. Because our objective depends on class-completion, not
+            individual galaxies, and is independent of the order of observation, this collection of weights will specify
+            a feasible solution.
           </p>
 
           <figure class="blog-post-image">
             <img src="../assets/images/class_bipartite.webp" alt="Bipartite graph representation of galaxy classes" />
           </figure>
           <br>
-          
+
           <p>
-            In reality, there will be an intra-class ranking of galaxies that we can use to select galaxies from each class, and generally for stability we ought to complete "long-run" &mdash; large $T_m$ &mdash; targets first. But the point is that once we have the per-fiber class numbers, we may further tune these parameters to find a close-to-optimal solution. 
+            In reality, there will be an intra-class ranking of galaxies that we can use to select galaxies from each
+            class, and generally for stability we ought to complete "long-run" &mdash; large $T_m$ &mdash; targets
+            first. But the point is that once we have the per-fiber class numbers, we may further tune these parameters
+            to find a close-to-optimal solution.
           </p>
 
           <p>
-            Note that because of our assumption that each galaxy is observable by exactly one fiber, and also due to the abundance of galaxies relative to fiber-exposures ($I\gg KL$), we can be assured that any galaxy which fiber $k$ chooses to observe will be distinct from any other galaxy which fiber $k'$ chooses to observe.
+            Note that because of our assumption that each galaxy is observable by exactly one fiber, and also due to the
+            abundance of galaxies relative to fiber-exposures ($I\gg KL$), we can be assured that any galaxy which fiber
+            $k$ chooses to observe will be distinct from any other galaxy which fiber $k'$ chooses to observe.
           </p>
-          
+
           <p>
-            So, onto the engineering front! How can we turn this graph model into an MPNN? 
+            So, onto the engineering front! How can we turn this graph model into an MPNN?
           </p>
 
           <header>
@@ -366,31 +354,34 @@
           </header>
 
           <p>
-            Our immediate task is to define a loss function. The <a href="https://en.wikipedia.org/wiki/Lagrange_multiplier">Lagrangian</a> that we'll construct should: 
+            Our immediate task is to define a loss function. The <a
+              href="https://en.wikipedia.org/wiki/Lagrange_multiplier">Lagrangian</a> that we'll construct should:
           </p>
 
           <ol type="1">
             <li>
-              Reflect our modeling choice of optimizing the number of galaxies per class per fiber $n_{km}$ rather than the binary variables $t_{ikl}$. 
+              Reflect our modeling choice of optimizing the number of galaxies per class per fiber $n_{km}$ rather than
+              the binary variables $t_{ikl}$.
             </li>
             <li>
-              Replace the discrete aspects (characteristic function, hard-counts $n_{km}$) with smooth relaxations, so that the loss is differentiable.
+              Replace the discrete aspects (characteristic function, hard-counts $n_{km}$) with smooth relaxations, so
+              that the loss is differentiable.
             </li>
           </ol>
           <br>
 
           <p>
-            The first requirement can be met by formalizing our prior discussion of the graph model: 
+            The first requirement can be met by formalizing our prior discussion of the graph model:
           </p>
 
           <div class="problem-box">
             $$
-            \Lambda_2 := 
+            \Lambda_2 :=
             \begin{cases}
             \begin{align}
-            \operatorname*{maximize}_{\substack{n_{km} \in \mathbb{N} \cup \{0\}}} \quad 
+            \operatorname*{maximize}_{\substack{n_{km} \in \mathbb{N} \cup \{0\}}} \quad
             & \min_{m \in \mathcal{M}} \Big\{ N_m^{-1} \sum_{k\in \mathcal{K}} n_{km} \Big\} \\
-            \text{subject to} \quad 
+            \text{subject to} \quad
             & \sum_{m \in \mathcal{M}} n_{km} T_m \leq T
             \end{align}
             \end{cases}
@@ -398,17 +389,19 @@
           </div>
 
           <p>
-            That's a lot less scary than $\Lambda_1$! To meet the second requirement of smoothness, though, the gradients are more meaningful if we reformulate in terms of the <i>times</i> that each fiber will provide each class, $t_{km} := n_{km} T_m$: 
+            That's a lot less scary than $\Lambda_1$! To meet the second requirement of smoothness, though, the
+            gradients are more meaningful if we reformulate in terms of the <i>times</i> that each fiber will provide
+            each class, $t_{km} := n_{km} T_m$:
           </p>
 
           <div class="problem-box">
             $$
-            \Lambda_3 := 
+            \Lambda_3 :=
             \begin{cases}
             \begin{align}
-            \operatorname*{maximize}_{\substack{t_{km} \in \mathbb{N} \cup \{0\}}} \quad 
+            \operatorname*{maximize}_{\substack{t_{km} \in \mathbb{N} \cup \{0\}}} \quad
             & \min_{m \in \mathcal{M}} \Big\{ N_m^{-1} \sum_{k\in \mathcal{K}} f_\alpha(t_{km} T_m^{-1}) \Big\} \\
-            \text{subject to} \quad 
+            \text{subject to} \quad
             & \sum_{m \in \mathcal{M}} t_{km} - T \leq 0
             \end{align}
             \end{cases}
@@ -416,34 +409,42 @@
           </div>
 
           <p>
-            Here, $\{f_\alpha : \mathbb{R} \to \mathbb{R}\}_{\alpha \geq 0}$ is a family of functions with the following property: $f_\alpha \to \text{id}$ as $\alpha \to 0^+$, while $f_\alpha \to \lfloor \cdot \rfloor$ as $\alpha \to \infty$. During training, we'll start by relaxing the parameter $\alpha = 0$ (no discretization) and then increase $\alpha$ to a desirable sharpness. 
-          </p>
-            
-          <p>
-            The version of $f_\alpha$ we'll use is graphed below (the motivation comes from complex analysis, explored below). Try pressing the "play" button to automatically vary $\alpha$ from $0$ to $20$. Notice that even at $\alpha = 10$, the approximation to the floor function is rather good. 
+            Here, $\{f_\alpha : \mathbb{R} \to \mathbb{R}\}_{\alpha \geq 0}$ is a family of functions with the following
+            property: $f_\alpha \to \text{id}$ as $\alpha \to 0^+$, while $f_\alpha \to \lfloor \cdot \rfloor$ as
+            $\alpha \to \infty$. During training, we'll start by relaxing the parameter $\alpha = 0$ (no discretization)
+            and then increase $\alpha$ to a desirable sharpness.
           </p>
 
-          <iframe src="https://www.desmos.com/calculator/qccszslg9b" width="100%" style="min-height:500px"></iframe> 
+          <p>
+            The version of $f_\alpha$ we'll use is graphed below (the motivation comes from complex analysis, explored
+            below). Try pressing the "play" button to automatically vary $\alpha$ from $0$ to $20$. Notice that even at
+            $\alpha = 10$, the approximation to the floor function is rather good.
+          </p>
+
+          <iframe src="https://www.desmos.com/calculator/qccszslg9b" width="100%" style="min-height:500px"></iframe>
 
           <br>
           <br>
           <p>
-            Therefore our Lagrangian loss function is 
+            Therefore our Lagrangian loss function is
           </p>
 
           $$
-            L(t_{11}, \dots, t_{KM}) 
-            = - \min_{m \in \mathcal{M}} \left\{ N_m^{-1} \sum_{k \in \mathcal{K}} f_\alpha(t_{km} T_m^{-1}) \right\}
-              + w \cdot p\left(\sum_{m \in \mathcal{M}} t_{km} - T \right)
+          L(t_{11}, \dots, t_{KM})
+          = - \min_{m \in \mathcal{M}} \left\{ N_m^{-1} \sum_{k \in \mathcal{K}} f_\alpha(t_{km} T_m^{-1}) \right\}
+          + w \cdot p\left(\sum_{m \in \mathcal{M}} t_{km} - T \right)
           $$
 
-          where $p = \operatorname*{LeakyReLU}^2$ is a penalty function to (smoothly) penalize overtime and $w \geq 0$ is a weight, and 
+          where $p = \operatorname*{LeakyReLU}^2$ is a penalty function to (smoothly) penalize overtime and $w \geq 0$
+          is a weight, and
           $$
-            f_{\alpha}(x) = x + \frac{1}{\pi} \arctan \left( \frac{e^{-1/\alpha} \sin(2\pi x)}{1 - e^{-1/\alpha}\cos(2\pi x)} \right) - \frac{1}{\pi} \arctan \left( \frac{e^{-1/\alpha}}{1-e^{-1/\alpha}} \right)
+          f_{\alpha}(x) = x + \frac{1}{\pi} \arctan \left( \frac{e^{-1/\alpha} \sin(2\pi x)}{1 - e^{-1/\alpha}\cos(2\pi
+          x)} \right) - \frac{1}{\pi} \arctan \left( \frac{e^{-1/\alpha}}{1-e^{-1/\alpha}} \right)
           $$
 
           <p>
-             Now, we're almost at the crux of this problem: the Message-Passing Layers themselves! We'll motivate the $f_\alpha$ and then discuss what messages are being passed in our network. 
+            Now, we're almost at the crux of this problem: the Message-Passing Layers themselves! We'll motivate the
+            $f_\alpha$ and then discuss what messages are being passed in our network.
           </p>
 
           <header>
@@ -453,28 +454,33 @@
           </header>
 
           <p>
-            Our goal is to conjure a family of functions $\{f_\alpha : \mathbb{R} \to \mathbb{R}\}_{\alpha \geq 0}$ such that $\lim_{\alpha \to 0^+} f_\alpha(x) = x$, $\lim_{\alpha \to \infty} f_\alpha(x) = \lfloor x \rfloor$, and $f_\alpha \in C^\infty(\mathbb{R})$ for $\alpha \geq 0$. For a well-articulated exposition on branches, consider Chapter 3 of Stein and Shakarchi's <i>Complex Analysis</i>, from the <i>Princeton Lectures in Analysis</i> series.
+            Our goal is to conjure a family of functions $\{f_\alpha : \mathbb{R} \to \mathbb{R}\}_{\alpha \geq 0}$ such
+            that $\lim_{\alpha \to 0^+} f_\alpha(x) = x$, $\lim_{\alpha \to \infty} f_\alpha(x) = \lfloor x \rfloor$,
+            and $f_\alpha \in C^\infty(\mathbb{R})$ for $\alpha \geq 0$. For a well-articulated exposition on branches,
+            consider Chapter 3 of Stein and Shakarchi's <i>Complex Analysis</i>, from the <i>Princeton Lectures in
+              Analysis</i> series.
           </p>
-            
+
           <p>
-            Let $\lfloor x \rfloor = x - \{x\}$, where $\{x\} \equiv x \, \operatorname*{mod}\, 1$ denotes the fractional part, which is discontinuous precisely at $\mathbb{Z}$. For each $r \in (0, 1)$ define 
+            Let $\lfloor x \rfloor = x - \{x\}$, where $\{x\} \equiv x \, \operatorname*{mod}\, 1$ denotes the
+            fractional part, which is discontinuous precisely at $\mathbb{Z}$. For each $r \in (0, 1)$ define
           </p>
 
           $$
-            \varphi_r(x) := - \frac{1}{\pi} \Im \left( \log(1 - re^{2\pi ix}) \right)
-            \equiv - \frac{1}{\pi} \arctan \left( \frac{r \sin(2\pi x)}{1 - r\cos(2\pi x)} \right)
+          \varphi_r(x) := - \frac{1}{\pi} \Im \left( \log(1 - re^{2\pi ix}) \right)
+          \equiv - \frac{1}{\pi} \arctan \left( \frac{r \sin(2\pi x)}{1 - r\cos(2\pi x)} \right)
           $$
 
           <p>
-            where $\log$ denotes the principal branch of the complex logarithm. (The equality follows from unwinding definitions.) Some observations:
+            where $\log$ denotes the principal branch of the complex logarithm. (The equality follows from unwinding
+            definitions.) Some observations:
           </p>
 
           <ol type="1">
             <li>
-              Since $\Re(re^{2\pi ix}) \leq r < 1$, each $\varphi_r$ is smooth.
-            </li>
+              Since $\Re(re^{2\pi ix}) \leq r < 1$, each $\varphi_r$ is smooth. </li>
             <li>
-              As $r \to 1^-$ it can be shown that $\varphi_r(x) \to -\frac{1}{2} + \{x\}$. 
+              As $r \to 1^-$ it can be shown that $\varphi_r(x) \to -\frac{1}{2} + \{x\}$.
             </li>
             <li>
               As $r \to 0^+$ continuity implies $\varphi_r(x) \to 0$.
@@ -483,7 +489,10 @@
           <br>
 
           <p>
-            Hence, the natural candidate is $f_r(x) = x - \varphi_r(x) + \psi_r$, where $\psi_r = - \frac{1}{\pi} \arctan(\frac{r}{1-r})$ serves as a constant correction term which tends to $-\frac{1}{2}$ as $r \to 1^-$. Thus the final task is to define a parametrization $r = e^{-1/\alpha}$, since then we have the correct behavior as $\alpha \to 0^+$ and $\alpha \to \infty$.
+            Hence, the natural candidate is $f_r(x) = x - \varphi_r(x) + \psi_r$, where $\psi_r = - \frac{1}{\pi}
+            \arctan(\frac{r}{1-r})$ serves as a constant correction term which tends to $-\frac{1}{2}$ as $r \to 1^-$.
+            Thus the final task is to define a parametrization $r = e^{-1/\alpha}$, since then we have the correct
+            behavior as $\alpha \to 0^+$ and $\alpha \to \infty$.
           </p>
 
           <header>
@@ -503,6 +512,8 @@
   </main>
 
   <!-- core JS + icons (kept identical to index.html) -->
+  <script>window.assetsPath = '..';</script>
+  <script src="../assets/js/sidebar.js"></script>
   <script src="../assets/js/script.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

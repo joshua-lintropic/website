@@ -23,119 +23,8 @@
   <main>
 
     <!-- ───────────────── SIDEBAR ───────────────── -->
-    <aside class="sidebar" data-sidebar>
+    <!-- ───────────────── SIDEBAR (Injected via assets/js/sidebar.js) ───────────────── -->
 
-      <div class="sidebar-info">
-
-        <figure class="avatar-box">
-          <img src="../assets/images/my-pfp.webp" alt="Joshua Lin" width="80">
-        </figure>
-
-        <div class="info-content">
-          <h1 class="name" title="Joshua Lin">Joshua Lin</h1>
-
-          <p class="title">math + cs</p>
-        </div>
-
-        <button class="info_more-btn" data-sidebar-btn>
-          <span>Show Contacts</span>
-
-          <ion-icon name="chevron-down"></ion-icon>
-        </button>
-
-      </div>
-
-      <div class="sidebar-info_more">
-
-        <div class="separator"></div>
-
-        <ul class="contacts-list">
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="mail-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Email</p>
-
-              <a href="mailto:joshua.lin@princeton.edu" class="contact-link">joshua.lin@princeton.edu</a>
-            </div>
-
-          </li>
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="phone-portrait-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Phone</p>
-
-              <a href="tel:+15596910093" class="contact-link">+1 (559) 691-0093</a>
-            </div>
-
-          </li>
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="school-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Education</p>
-
-                <a href="https://www.princeton.edu/" class="contact-link">Princeton University</a>
-            </div>
-
-          </li>
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="location-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Location</p>
-
-              <address>Princeton, NJ, USA</address>
-            </div>
-
-          </li>
-
-        </ul>
-
-        <div class="separator"></div>
-
-        <ul class="social-list">
-
-          <li class="social-item">
-            <a href="https://github.com/joshua-lintropic" class="social-link">
-              <ion-icon name="logo-github"></ion-icon>
-            </a>
-          </li>
-
-          <li class="social-item">
-            <a href="https://www.linkedin.com/in/joshua-linsanity/" class="social-link">
-              <ion-icon name="logo-linkedin"></ion-icon>
-            </a>
-          </li>
-
-          <li class="social-item">
-            <a href="https://x.com/lintropicjoshua" class="social-link">
-              <ion-icon name="logo-twitter"></ion-icon>
-            </a>
-          </li>
-
-        </ul>
-
-      </div>
-
-    </aside>
 
     <!-- ──────────────── MAIN CONTENT ──────────────── -->
     <div class="main-content">
@@ -161,11 +50,20 @@
             <i>Posted 2025-11-18.</i>
           </p>
           <p>
-            On Sunday, November 16th, Princeton ACM hosted its annual Computer Science Contest (COSCON), with over 100 teams competing! I wrote two problems for the contest. "Tetris Melons" presented a twist on the classic 2D packing problem, requiring careful heuristics and randomization to find a good optimizer. The other was "Castle Invasion", a game-theoretic challenge similar to Blotto, where teams had to allocate soldiers to castles while estimating opponents' play. This year, we also partnered with Princeton Quantitative Traders for the first time as well, hosting a prediction-markets challenge during the competition. 
+            On Sunday, November 16th, Princeton ACM hosted its annual Computer Science Contest (COSCON), with over 100
+            teams competing! I wrote two problems for the contest. "Tetris Melons" presented a twist on the classic 2D
+            packing problem, requiring careful heuristics and randomization to find a good optimizer. The other was
+            "Castle Invasion", a game-theoretic challenge similar to Blotto, where teams had to allocate soldiers to
+            castles while estimating opponents' play. This year, we also partnered with Princeton Quantitative Traders
+            for the first time as well, hosting a prediction-markets challenge during the competition.
           </p>
 
           <p>
-            Separately, on Tuesday, November 18th, I hosted a moderated discussion for ACM on the implications of LLMs in theory research with Chi Jin, one of the main authors behind Goedel-v2 (the current SOTA open-source model for formal proofs, which achieves 1st on PutnamBench). We discussed the impact of frontier models on theorem-proving, conjecture generation, and counterexample construction, as well as broader impacts on epistemic quality and the research process. (Most importantly, there was boba from Junbi! — lots of it). 
+            Separately, on Tuesday, November 18th, I hosted a moderated discussion for ACM on the implications of LLMs
+            in theory research with Chi Jin, one of the main authors behind Goedel-v2 (the current SOTA open-source
+            model for formal proofs, which achieves 1st on PutnamBench). We discussed the impact of frontier models on
+            theorem-proving, conjecture generation, and counterexample construction, as well as broader impacts on
+            epistemic quality and the research process. (Most importantly, there was boba from Junbi! — lots of it).
           </p>
           <figure class="blog-post-carousel">
             <ul class="carousel-list">
@@ -186,6 +84,8 @@
   </main>
 
   <!-- core JS + icons (kept identical to index.html) -->
+  <script>window.assetsPath = '..';</script>
+  <script src="../assets/js/sidebar.js"></script>
   <script src="../assets/js/script.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
