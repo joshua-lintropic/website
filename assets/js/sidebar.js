@@ -19,6 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
       <h1 class="name" title="Joshua Lin">Joshua Lin</h1>
 
       <p class="title">Math @ Princeton</p>
+
+      <button class="sidebar-collapse-btn" title="Collapse sidebar">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </button>
     </div>
 
     <button class="info_more-btn" data-sidebar-btn>
@@ -136,6 +140,26 @@ document.addEventListener('DOMContentLoaded', () => {
     // Verify injection
     const sidebar = document.querySelector('.sidebar');
     console.log('Sidebar element after injection:', sidebar);
+
+    // Collapse functionality
+    if (sidebar) {
+      // Restore collapsed state from localStorage
+      const isCollapsed = localStorage.getItem('sidebarCollapsed') === 'true';
+      if (isCollapsed) {
+        sidebar.classList.add('collapsed');
+      }
+
+      // Add collapse button event listener
+      const collapseBtn = sidebar.querySelector('.sidebar-collapse-btn');
+      if (collapseBtn) {
+        collapseBtn.addEventListener('click', () => {
+          sidebar.classList.toggle('collapsed');
+          const collapsed = sidebar.classList.contains('collapsed');
+          localStorage.setItem('sidebarCollapsed', collapsed);
+          console.log('Sidebar collapsed:', collapsed);
+        });
+      }
+    }
   } else {
     console.error('Sidebar injection failed: main element not found');
   }
